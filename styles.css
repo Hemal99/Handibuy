@@ -20,30 +20,54 @@
 }
 
 /* Style the search box inside the navigation bar */
-.topnav input[type="text"] {
-  float: right;
-  padding: 6px;
+.searchInput {
   border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  width: 80%;
+  padding-top: 20px;
+  margin-left: 20px; 
+  width: 118%;
   font-size: 17px;
   border: 0;
   outline: 0;
   background: transparent;
   border-bottom: 1px solid black;
 }
+.categoryBtn{
+  background: white;
+  text-align: center;
+  border: none ;
+  cursor: pointer;
+  border:1px solid white !important;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
-/* .topnav .search-container button {
+
+.searchButton {
     float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #ddd;
+    padding: 6px 5px 0px 0px;
+    margin-top: 15px;
+    margin-left: 10px;
+    background: #fff;
     font-size: 17px;
-    border: none;
+    border: none ;
     cursor: pointer;
-  } */
+    background-color: white;
+  } 
+.cartButton{
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-left: 10px;
+  background: #fff;
+  font-size: 17px;
+  border: none ;
+  cursor: pointer;
+  display: inline;
+  background-color: white;
+  border-color: #fff  !important;
+}
+
 form.example input[type="text"] {
   padding: 10px;
   font-size: 17px;
@@ -51,24 +75,47 @@ form.example input[type="text"] {
   width: 90%;
 }
 
-@media screen and (max-width: 600px) {
-  #isLand {
+@media screen and (max-width: 1290px) {
+  .searchInput {
     display: none;
   }
+  
 }
 
 @media screen and (max-width: 600px) {
   #Category {
     display: none;
   }
+  #logo{
+    width: 75%;
+    text-align: center;
+  }
+  .cartButton{
+    margin-left:0px ;
+    margin-top: 0px;
+    align-items: center;
+    padding:0px 2px;
+  }
+  .searchButton{
+    margin-left: 0px;
+    margin-top: 0px;
+  }
 }
 
 .Category-item {
-  margin-top: 5rem;
+  margin-top: 1rem;
+    height: 82px;
+    width: 80px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  
 }
 
 .Category-item-link {
   color: gray;
+  font-size: 13px
+  
 }
 
 .Category-item-link:hover {
@@ -172,3 +219,12 @@ footer{
     justify-content: center;
     text-align: center;
 }
+
+
+/*View All*/
+.viewAll{
+  border: none;
+  color: #ffffff;
+  background-color: #181361;
+}
+

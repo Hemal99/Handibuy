@@ -13,134 +13,270 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="./glider.min.css" />
     <link rel="stylesheet" href="./styles.css" />
 
     <title>HandyBy.lk</title>
   </head>
   <body>
+    <div id='sale' class="row justify-content-center" style="background-color: #191464 ; max-width: 120%">
+      <div style="margin-top: 1rem; color: white; margin-bottom: 1rem;" >
+        <h6><span style="font-size: 0.8rem;">Get Up to 40% OFF New-Season Styles</span> <span style="background-color: black; padding: 5px;font-size: 0.8rem;">MEN</span><span style="background-color: black; padding: 5px;font-size: 0.8rem; margin-left: 0.5rem; margin-right: 0.5rem;">WOMEN </span><span style="font-size: 0.7rem;"> * Limited time only</span>.</h6>
+      </div>
+     
+    </div>
     <div class="container">
-      <section id="nav-bar">
-        <!--Navigation Bar-->
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-          <h6 style="margin-top: 2rem" id="isLand">
-            Island wide fastest delivery for your orders.
-          </h6>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto" style="margin-top: 2rem">
-              <li class="nav-item active">
-                <a class="nav-link" href="#"
-                  >My Account <span class="sr-only">(current)</span></a
+      <header>
+       
+        <section id="nav-bar">
+          <!--Navigation Bar-->
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <span><i class="porto-icon-shipping"></i></span>
+            <h6 style="margin-top: 2rem" id="isLand">
+              Island wide fastest delivery for your orders.
+            </h6>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto" style="margin-top: 2rem">
+                <li class="nav-item active" >
+                  <a class="nav-link" href="#"style="font-size: 0.8rem;"
+                    >My Account <span class="sr-only">(current)</span></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="font-size: 0.8rem;">Cart</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="font-size: 0.8rem;">Contact us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="font-size: 0.8rem;">Log in</a>
+                </li>
+                <span
+                  class="rounded-circle"
+                  style="margin-top: 0.2rem"
+                  id="facebookIcon"
                 >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Log in</a>
-              </li>
-              <span
-                class="rounded-circle"
-                style="margin-top: 0.5rem"
-                id="facebookIcon"
-              >
-                <a class="nav-link" href="#"
-                  ><i class="fa fa-facebook" aria-hidden="true"></i
-                ></a>
-              </span>
-            </ul>
+                  <a class="nav-link" href="#"><i class="bi bi-facebook"></i></a>
+                </span>
+              </ul>
+            </div>
+          </nav>
+        </section>
+  
+        <!--Search-->
+        <section id="search" style="margin-top: 2rem">
+          <div class="row">
+            <!-- <a class="active" href="#home">HandBy.lk</a>  -->
+            <!-- <form class="example">
+            </form> -->
+  
+            <div class="col-12 col-md-12 col-lg-12 row">
+              <div class="col-5 col-md-2 col-lg-2">
+                <img src="./assets/images/HandyBuy-new-logo.png" id="logo" />
+              </div>
+              <div class="col-2 col-md-8 col-lg-8">
+                <input
+                  type="text"
+                  placeholder="Search.."
+                  name="search"
+                  class="searchInput"
+                />
+              </div>
+              <div class="col-5 col-md-2 col-lg-2">
+                <button class="cartButton">
+                  <i class="bi bi-bag" style="font-size: 2rem"></i>
+                </button>
+  
+                <button class="searchButton"><i class="bi bi-search"></i></button>
+              </div>
+            </div>
+            <!-- <div class="col-12 col-md-2 col-lg-2">
+             
+              
+            </div> -->
           </div>
-        </nav>
-      </section>
+        </section>
+        <!-- End of Search-->
+      </header>
+     
 
-      <section id="search" style="margin-top: 2rem">
-        <div class="topnav">
-          <!-- <a class="active" href="#home">HandBy.lk</a>  -->
-          <form class="example">
-            <input type="text" placeholder="Search.." name="search" />
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
-      </section>
+     
 
       <!--Categories-->
-      <div class="row mr-5 mt-100 text-center" id="Category">
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+      <div class="row mr-5 mt-80 text-center" id="Category">
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn " style="text-decoration: none; ">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px; background-color: #3d5167; color: white;"
+            >
+              <i class="fas fa-bars fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
           <span><a href="" class="Category-item-link">Categories</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+            <i class="fas fa-shopping-basket fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
           <span><a href="" class="Category-item-link">Grocery</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+            <i class="fal fa-pie fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
           <span><a href="" class="Category-item-link">Cakes & Bakes</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+            <i class="fal fa-couch fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
-          <span
-            ><a href="" class="Category-item-link"
-              >Furniture/<br />Home & Garden</a
-            ></span
-          >
+          <span><a href="" class="Category-item-link">Furniture / <br> Home & <br> Garden</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+            <i class="far fa-heartbeat fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
-          <span><a href="" class="Category-item-link">Health & Beauty</a></span>
+          <span><a href="" class="Category-item-link">Health &<br> Beauty</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+            <i class="far fa-tshirt fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
           <span><a href="" class="Category-item-link">Fashion</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+            <i class="fal fa-mobile fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
-          <span
-            ><a href="" class="Category-item-link">Mobiles & Tablets</a></span
-          >
+          <span><a href="" class="Category-item-link">Mobiles &<br> Tablets</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+              <i class="fas fa-bars fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
           <span><a href="" class="Category-item-link">Handicrafts</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+            <i class="fal fa-basketball-ball fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
           <span><a href="" class="Category-item-link">Sports</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+              <i class="fas fa-bars fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
           <span><a href="" class="Category-item-link">New Arrivals</a></span>
         </div>
-        <div class="col-6 col-md-1 p-1">
-          <img src="." class="Category-item" />
+        <div class="col-6 col-md-1 p-1" style="justify-content: center">
+          <a src="#" class="categoryBtn" style="text-decoration: none">
+            <span
+              class="Category-item rounded-circle"
+              style="padding-top: 24px"
+            >
+              <i class="fas fa-bars fa-2x"></i>
+            </span>
+          </a>
+
           <p class="mt-1 font700"></p>
           <span><a href="" class="Category-item-link">Sale</a></span>
         </div>
+       
       </div>
       <!--End of Category section-->
 
@@ -285,7 +421,7 @@
       <!--New Arrivals-->
       <h4 style="text-align: center; margin-top: 2rem">New Arrivals</h4>
       <div style="text-align: center; margin-top: 2rem; margin-bottom: 2rem">
-        <button type="button" class="btn btn-primary">View All</button>
+        <button type="button" class="btn btn-primary viewAll">View All</button>
       </div>
 
       <div class="glider-contain" style="margin-top: 5rem; margin-bottom: 5rem">
@@ -363,7 +499,7 @@
       <!--Handy by details-->
       <h4 style="text-align: center; margin-top: 2rem">HandyBy Details</h4>
       <div style="text-align: center; margin-top: 2rem; margin-bottom: 2rem">
-        <button type="button" class="btn btn-primary">View All</button>
+        <button type="button" class="btn btn-primary viewAll">View All</button>
       </div>
 
       <div class="glider-contain" style="margin-top: 5rem; margin-bottom: 5rem">
@@ -445,7 +581,7 @@
       <!--Other Categories-->
       <h4 style="text-align: center; margin-top: 2rem">Other Categories</h4>
       <div style="text-align: center; margin-top: 2rem; margin-bottom: 2rem">
-        <button type="button" class="btn btn-primary">View All</button>
+        <button type="button" class="btn btn-primary viewAll">View All</button>
       </div>
 
       <div class="row" style="width: 100%">
@@ -772,12 +908,17 @@
     </div>
 
     <footer class="container" style="margin-top: 5rem; max-width: 100%">
-      <div class="row " style="margin-top: 5rem">
-        <div class="col-12 col-md-3 col-lg-3" style="padding-top: 50px; padding-left:50px">
+      <div class="row" style="margin-top: 5rem">
+        <div
+          class="col-12 col-md-3 col-lg-3"
+          style="padding-top: 50px; padding-left: 50px"
+        >
           <div
             class="row d-flex justify-content-start d-flex align-items-center"
           >
-            <h5 style="color: #222259; font-weight: 700; font-size:0.9375rem;">CUSTOMER SERVICE</h5>
+            <h5 style="color: #222259; font-weight: 700; font-size: 0.9375rem">
+              CUSTOMER SERVICE
+            </h5>
           </div>
           <div
             class="row d-flex justify-content-start d-flex align-items-center"
@@ -795,82 +936,90 @@
           </div>
         </div>
 
-
-        <div class="col-12 col-md-3 col-lg-3" style="padding-top: 50px; padding-left:50px">
-          <div
-          class="row d-flex justify-content-start d-flex align-items-center"
+        <div
+          class="col-12 col-md-3 col-lg-3"
+          style="padding-top: 50px; padding-left: 50px"
         >
-          <h5 style="color: #222259; font-weight: 700; font-size:0.9375rem;">CUSTOMER SERVICE</h5>
+          <div
+            class="row d-flex justify-content-start d-flex align-items-center"
+          >
+            <h5 style="color: #222259; font-weight: 700; font-size: 0.9375rem">
+              ABOUT US
+            </h5>
+          </div>
+          <div
+            class="row d-flex justify-content-start d-flex align-items-center"
+          >
+            <h6>About Us</h6>
+          </div>
+          <div class="row d-flex justify-content-start">
+            <h6>Careers</h6>
+          </div>
+          <div class="row d-flex justify-content-start">
+            <h6>Our Stores</h6>
+          </div>
+          <div class="row d-flex justify-content-start">
+            <h6>Corporate Sales</h6>
+          </div>
+          <div class="row d-flex justify-content-start">
+            <h6>Careers</h6>
+          </div>
         </div>
         <div
-          class="row d-flex justify-content-start d-flex align-items-center"
+          class="col-12 col-md-3 col-lg-3"
+          style="padding-top: 50px; padding-left: 50px"
         >
-          <h6>Help & FAQs</h6>
-        </div>
-        <div class="row d-flex justify-content-start">
-          <h6>Shipping & Delivery</h6>
-        </div>
-        <div class="row d-flex justify-content-start">
-          <h6>Order History</h6>
-        </div>
-        <div class="row d-flex justify-content-start">
-          <h6>Login</h6>
-        </div>
-        </div>
-        <div class="col-12 col-md-3 col-lg-3" style="padding-top: 50px; padding-left:50px">
           <div
             class="row d-flex justify-content-start d-flex align-items-center"
           >
-            <h5 style="color: #222259; font-weight: 700; font-size:0.9375rem;">CUSTOMER SERVICE</h5>
+            <h5 style="color: #222259; font-weight: 700; font-size: 0.9375rem">
+              MORE INFORMATION
+            </h5>
           </div>
           <div
             class="row d-flex justify-content-start d-flex align-items-center"
           >
-            <h6>Help & FAQs</h6>
+            <h6>Affiliates</h6>
           </div>
           <div class="row d-flex justify-content-start">
-            <h6>Shipping & Delivery</h6>
+            <h6>Refer a Friend</h6>
           </div>
           <div class="row d-flex justify-content-start">
-            <h6>Order History</h6>
+            <h6>Student Beans Offers</h6>
           </div>
           <div class="row d-flex justify-content-start">
-            <h6>Login</h6>
+            <h6>Gift Vouchers</h6>
           </div>
         </div>
-        <div class="col-12 col-md-3 col-lg-3" style="padding-top: 50px; padding-left:50px">
+        <div
+          class="col-12 col-md-3 col-lg-3"
+          style="padding-top: 50px; padding-left: 50px"
+        >
           <div
             class="row d-flex justify-content-start d-flex align-items-center"
           >
-            <h5 style="color: #222259; font-weight: 700; font-size:0.9375rem;">CUSTOMER SERVICE</h5>
+            <h5 style="color: #222259; font-weight: 700; font-size: 0.9375rem">
+              SOCIAL MEDIA
+            </h5>
           </div>
           <div
             class="row d-flex justify-content-start d-flex align-items-center"
           >
-            <h6>Help & FAQs</h6>
-          </div>
-          <div class="row d-flex justify-content-start">
-            <h6>Shipping & Delivery</h6>
-          </div>
-          <div class="row d-flex justify-content-start">
-            <h6>Order History</h6>
-          </div>
-          <div class="row d-flex justify-content-start">
-            <h6>Login</h6>
+            <i class="bi bi-facebook" style="font-size: 3rem"></i>
           </div>
         </div>
       </div>
 
-      <div class="row " style="margin-top: 5rem; background-color: aliceblue; ">
-          <div class="col-12 col-md-6 col-md-6" style="margin-top: 5rem; margin-bottom:5rem">
-            © 2021 HandyBuy Sri Lanka. Technology Consultation & Development by SurfEdge
-
-          </div>
-          <div class="col-12 col-md-6 col-md-6">
-
-          </div>
+      <div class="row" style="margin-top: 5rem; background-color: aliceblue">
+        <div
+          class="col-12 col-md-6 col-md-6"
+          style="margin-top: 5rem; margin-bottom: 5rem"
+        >
+          © 2021 HandyBuy Sri Lanka. Technology Consultation & Development by
+          SurfEdge
+        </div>
+        <div class="col-12 col-md-6 col-md-6"></div>
       </div>
-
     </footer>
 
     <script src="./glider.min.js"></script>
