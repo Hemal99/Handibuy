@@ -25,17 +25,16 @@
     />
     <link rel="stylesheet" href="./glider.min.css" />
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./index.js" defer ></script>
-
+    
     <title>HandyBuy.lk</title>
   </head>
   <body>
     <div
       id="sale"
       class="row justify-content-center"
-      style="background-color: #191464; max-width: 100%"
-    >
-      <div style="margin-top: 1rem; color: white; margin-bottom: 0.3rem">
+      style="background-color: #191464; "
+     >
+      <div class="saleHeader" >
         <h6>
           <span style="font-size: 0.8rem"
             >Get Up to 40% OFF New-Season Styles</span
@@ -51,33 +50,25 @@
               margin-right: 0.5rem;
             "
             >WOMEN </span
-          ><span style="font-size: 0.7rem"> * Limited time only</span>.
+          ><span id="limited" style="font-size: 0.8rem"> * Limited time only</span>
         </h6>
       </div>
     </div>
-    <div class="container">
-      <header>
+    <div>
+      <header class=" headContainer">
         <section id="nav-bar">
           <!--Navigation Bar-->
           <nav class="navbar navbar-expand-lg navbar-light">
             <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-            <span style="margin-top: 2rem; margin-left:2rem; margin-right: 2rem;"><i class="fal fa-shipping-fast"><span style="margin-left: 1rem; color: #666666;font-weight: 600;
+            <span id="IslandWide" style="margin-top: 2rem; margin-left:2rem; margin-right: 2rem;"><i class="fal fa-shipping-fast"><span style="margin-left: 1rem; color: #666666;font-weight: 600;
               font-size: 13px;
               line-height: 1.2;
               letter-spacing: -.05em;font-family: Poppins,sans-serif">Island wide fastest delivery for your orders.</span></i></span>
             </span>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
+            <span class="headerFB">  <i class="fab fa-facebook-f"></i></span>
             <div class="collapse navbar-collapse" id="navbarNav">
+            
+            
               <ul class="navbar-nav ml-auto" style="margin-top: 1rem; margin-left:3rem; margin-right: 2rem;">
                 <li class="nav-item active">
                   <a class="nav-link" href="#" style="font-size: 0.8rem"
@@ -120,11 +111,18 @@
             <!-- <form class="example">
             </form> -->
 
-            <div class="col-12 col-md-12 col-lg-12 row">
+            <div class="col-12 col-md-12 col-lg-12 row searchDiv" >
+              <button
+              class="sideBartoggler"
+              type="button"
+              
+            >
+              <span class="navbar-toggler-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
+            </button>
               <div class="col-5 col-md-2 col-lg-2">
                 <img src="./assets/images/HandyBuy-new-logo.png" id="logo" />
               </div>
-              <div class="col-2 col-md-7 col-lg-8">
+              <div class="col-1 col-md-7 col-lg-8">
                 <input
                   type="text"
                   placeholder="Search.."
@@ -132,14 +130,28 @@
                   id="searchInput"
                 />
               </div>
-              <div class="col-5 col-md-3 col-lg-2">
-                <button class="cartButton">
-                  <i class="bi bi-bag" style="font-size: 2rem"></i>
-                </button>
+              <div class="col-4 col-md-3 col-lg-2 cart">
+                <span>
+                  <button class="cartButton">
+                    <i class="bi bi-bag" ></i>
+                  </button>
+                </span>
                 
+                <span>
+                  <button class="user" >
+                    <i class="far fa-user"></i>
+                  </button>
+                </span>
+               
+                <span>
+                  
                   <button class="searchButton" >
                     <i class="bi bi-search"></i>
                   </button>
+                </span>
+                
+
+                 
                 
                
               </div>
@@ -201,12 +213,7 @@
 
           <div class="col-6 col-md-1 p-1" style="justify-content: center">
             <a href="https://handybuy.lk/product-category/homeandgarden/" class="categoryBtn" style="text-decoration: none">
-              <!-- <span
-                class="Category-item rounded-circle"
-                style="padding-top: 24px"
-              >
-                <i class="fal fa-couch fa-2x"></i>
-              </span> -->
+            
               <img
                 src="//handybuy.lk/wp-content/uploads/2021/03/furniture-online-shopping-handybuy-lk-colombo-1.jpg"
                 style="border-radius: 50%; width: 90%"
@@ -369,7 +376,7 @@
      <div class="container">
       <!--Services Section-->
       <div class="glider-contain">
-        <div class="glider">
+        <div class="glider" id="service">
           <div class="glider-item">
             <span ><i class="fal fa-shipping-fast serviceIcon" ></i></i><span class="gliderIcon" style="font-family: Poppins,sans-serif">Island wide fastest delivery for your orders.<br><span class="serviceTag">By HandyBuy.lk</span></span></i></span>
           </div>
@@ -393,125 +400,7 @@
 
        
         <div class="glider">
-          
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer1'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-             />
-            <!-- <span class="quickView">Quick View</span> -->
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            <!-- <span class="imageCartIcon"><i class="fal fa-shopping-bag"></i></span>
-             -->
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer1'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/DSC04674-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer1'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer1'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
+        
         </div>
         <button class="glider-next glide-nextBtn">
           <i class="fa fa-chevron-right fa-xs"></i>
@@ -526,156 +415,13 @@
        
       </div>
 
-      <div class="glider-contain" style="margin-top: 5rem; margin-bottom: 5rem ; ">
+      <div class="glider-contain" >
         <button class="glider-prev glide-preBtn">
           <i class="fa fa-chevron-left fa-xs"></i>
         </button>
 
         <div class="glider">
 
-          <div class="card" style="width: 13rem !important; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer2'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative; "
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer2'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer2'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer2'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer2'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
         </div>
 
         <button class="glider-next glide-nextBtn">
@@ -684,13 +430,13 @@
       </div>
 
       <!--Handy by details-->
-      <h4  class="product-heading">HandyBuy Details</h4>
+      <h4  class="product-heading">HandyBuy Deals</h4>
       <div style="text-align: center; margin-top: 2rem; margin-bottom: 2rem">
         <a href="https://handybuy.lk/product-category/deals/"> <button type="button" class="btn btn-primary viewAll">View All</button></a>
        
       </div>
 
-      <div class="glider-contain" style="margin-top: 5rem; margin-bottom: 5rem">
+      <div class="glider-contain">
         <button class="glider-prev glide-preBtn"  >
           <i class="fa fa-chevron-left fa-xs"></i>
         </button>
@@ -698,121 +444,7 @@
        
         <div class="glider">
           
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer2'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer2'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer2'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="width: 18rem; margin: 5px;cursor: pointer;">
-            <div class='imageContainer imageContainer2'>
-              <img
-              class="card-img-top"
-              src="./assets/carousel/71fl3xZuzwL._SX355_-copy-259x259.jpg"
-              alt="Card image cap"
-              style="position: relative;"
-            />
-            <span class="imageIcon rounded-circle" style="padding-left:5px; padding-top: 5px; font-weight: 700;">10<sup>o</sup></span>
-            </div>
-            <div class="card-body" style="cursor: pointer;">
-              <a><span style="font-size: 10px; color: #6c757d;" class="card-title">CROPS,SEEDS & PLANTS</span></a>
-              <a><h6 class="card-title">Rose Flower Plant</h6></a>
-              <p class="card-text">
-               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
-              </p>
-              <div>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
-              </div>
-              <div>
-                <h5><span style="font-weight: 600;">Rs. 350</span></h5>
-              </div>
-            </div>
-          </div>
+          
         </div>
         <button class="glider-next glide-nextBtn">
           <i class="fa fa-chevron-right fa-xs"></i>
@@ -822,15 +454,15 @@
      
 
       <!--SALE SECTION-->
-      <div class="container justify-content-center d-flex align-items-center " id="bigsale">
-        <div class=" d-flex align-items-center justify-content-start row">
-          <div class="col-sm-12 col-md-2 mr-auto ">
-            <span class="item1">BIG SALE</span>
+      <div class="container  d-flex align-items-center " id="bigsale">
+        <div class=" d-flex align-items-center row" style="width: 100%;">
+          <div class=" col-sm-12 col-md-2" style="margin: 5px;">
+            <span class="item1 ">BIG SALE</span>
           </div>
-          <div class="col-sm-12 col-md-8 ">
-            <span class="item2">ALL NEW FASHION BRANDS ITEMS UP TO 70% OFFOnline Purchases Only</span>
+          <div class="col-sm-12 col-md-7 " style="text-align: left;">
+            <span class="item2">ALL NEW FASHION BRANDS ITEMS UP TO 70% OFF <span style="font-size: 0.825rem;">Online Purchases Only</span></span>
           </div>
-          <div class="col-sm-12 col-md-2 ml-auto">
+          <div class="col-sm-12 col-md-2" class='viewSaleDev' >
            <button class="item3 ">VIEW SALE</button>
           </div>
         </div>
@@ -1288,7 +920,7 @@
           <div
             class="row d-flex justify-content-start d-flex align-items-center"
           >
-            <a href="https://facebook.com/HandyBuy.lk/" style="text-decoration: none;"><i class="bi bi-facebook" style="font-size: 3rem"></i></a>
+            <a href="https://facebook.com/HandyBuy.lk/" style="text-decoration: none;"><i class="bi bi-facebook footerFB" style="font-size: 3rem"></i></a>
           </div>
         </div>
       </div>
@@ -1390,8 +1022,36 @@
   </div>
 </div>
 
+    <!--Side Nav-->
+
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#"><span ></span><i class="fas fa-bars"></i> </span> Categories</a>
+      <div>
+        <input type="text" placeholder="Search.." name="search" style="background-color:  #282e36; color: white; border: 0; padding: 8px 8px 8px 32px; width: 70%;" >
+        <button type="submit" style="background-color: #282e36; color: white; border: 0; padding: 8px 8px 8px 8px;"><i class="fa fa-search"></i></button>
+      </div>
+      <a href="#">Grocery</a>
+      <a href="#">Cakes & Bakes</a>
+      <a href="#">Furniture / Home & Garden</a>
+      <a href="#">Health & Beauty</a>
+      <a href="#">Fashion</a>
+      <a href="#">Mobile & Tablets</a>
+      <a href="#">Handicrafts</a>
+      <a href="#">sports</a>
+      <a href="#">new arrivals</a>
+      <a href="#">sale</a>
+      <a href="#" style="padding-top: 15px;">my account</a>
+      <a href="#">cart</a>
+      <a href="#">contact us</a>
+      <a href="#">log in</a>
+    </div>
+
     <script src="./glider.min.js"></script>
     <script src="./app.js"></script>
+    <script src="./product.js" defer ></script>
+    <script src="./index.js" defer ></script>
+
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -1410,3 +1070,4 @@
     ></script>
   </body>
 </html>
+
