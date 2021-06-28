@@ -332,7 +332,7 @@ form.example::after {
 .quickView {
   position: absolute;
   left: 50%;
-  bottom: 42%;
+  bottom: 35%;
   transform: translate(-50%);
   padding-bottom: 10px;
   color: white;
@@ -431,7 +431,7 @@ footer {
 }
 
 /*Image hovers*/
- .imageContainer1  .imageContainer2 .imageContainer3{
+ .imageContainer1  .imageContainer2 .imageContainer3 .imageContainer4 .imageContainer5 .imageContainer6{
   position: relative;
 
   background-repeat: no-repeat;
@@ -465,6 +465,27 @@ footer {
   width: 100%;
   height: 300px;
 }
+
+.imageContainer4 img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.imageContainer5 img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.imageContainer6 img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
 /* .card-img-top {
   content: url("./assets/carousel/rose-22-259x194.jpg");
 }
@@ -479,7 +500,7 @@ footer {
   position: absolute;
   bottom: 16rem;
   top: 1rem;
-  left: 1rem;
+  left: 2rem;
   height: 35px;
   width: 33px;
   color: white;
@@ -487,29 +508,84 @@ footer {
   z-index: 10;
 }
 
-.imageContainer2 .imageIcon {
+.imageContainer1  .saleIcon {
   position: absolute;
-  bottom: 16rem;
-  top: 1rem;
+  bottom: 10rem;
+  top: 4rem;
   left: 1rem;
-  height: 35px;
-  width: 33px;
+  height: 20px;
+  width: 45px;
   color: white;
-  background-color: #6c757d;
+  background-color: #e27c7c;
   z-index: 10;
+  font-size: 12px;
+ 
 }
 
-.imageContainer3 .imageIcon {
+.imageContainer2 .saleIcon {
   position: absolute;
-  bottom: 16rem;
+  bottom: 10rem;
   top: 1rem;
   left: 1rem;
-  height: 35px;
-  width: 33px;
+  height: 20px;
+  width: 45px;
   color: white;
-  background-color: #6c757d;
+  background-color: #e27c7c;
   z-index: 10;
+  font-size: 12px;
 }
+
+.imageContainer3 .saleIcon {
+  position: absolute;
+  bottom: 10rem;
+  top: 1rem;
+  left: 1rem;
+  height: 20px;
+  width: 45px;
+  color: white;
+  background-color: #e27c7c;
+  z-index: 10;
+  font-size: 12px;
+}
+.imageContainer4 .saleIcon {
+  position: absolute;
+  bottom: 10rem;
+  top: 1rem;
+  left: 1rem;
+  height: 20px;
+  width: 45px;
+  color: white;
+  background-color: #e27c7c;
+  z-index: 10;
+  font-size: 12px;
+}
+
+.imageContainer5 .saleIcon {
+  position: absolute;
+  bottom: 10rem;
+  top: 1rem;
+  left: 1rem;
+  height: 20px;
+  width: 45px;
+  color: white;
+  background-color: #e27c7c;
+  z-index: 10;
+  font-size: 12px;
+}
+
+.imageContainer6 .saleIcon {
+  position: absolute;
+  bottom: 10rem;
+  top: 1rem;
+  left: 1rem;
+  height: 20px;
+  width: 45px;
+  color: white;
+  background-color: #e27c7c;
+  z-index: 10;
+  font-size: 12px;
+}
+
 
 
 .imageContainer1  .imageCartIcon {
@@ -574,6 +650,57 @@ footer {
   
 }
 
+.imageContainer4 .imageCartIcon {
+  position: absolute;
+  bottom: 16rem;
+  top: 1rem;
+  left: 85%;
+  height: 35px;
+  border: 1px solid #6c757d;
+  width: 33px;
+  color: black;
+  background-color: white;
+  border-radius: 50%;
+  padding-left: 8.5px;
+  padding-top: 7px;
+  font-weight: 700;
+  
+}
+
+.imageContainer5 .imageCartIcon {
+  position: absolute;
+  bottom: 16rem;
+  top: 1rem;
+  left: 85%;
+  height: 35px;
+  border: 1px solid #6c757d;
+  width: 33px;
+  color: black;
+  background-color: white;
+  border-radius: 50%;
+  padding-left: 8.5px;
+  padding-top: 7px;
+  font-weight: 700;
+  
+}
+
+.imageContainer6 .imageCartIcon {
+  position: absolute;
+  bottom: 16rem;
+  top: 1rem;
+  left: 85%;
+  height: 35px;
+  border: 1px solid #6c757d;
+  width: 33px;
+  color: black;
+  background-color: white;
+  border-radius: 50%;
+  padding-left: 8.5px;
+  padding-top: 7px;
+  font-weight: 700;
+  
+}
+
 .imageCartIcon:hover {
   display: block;
   color: white;
@@ -598,6 +725,21 @@ footer {
 }
 
 .imageContainer3 .imageCartIcon:hover {
+  background-color: #181361;
+  font-weight: 700;
+}
+
+.imageContainer4 .imageCartIcon:hover {
+  background-color: #181361;
+  font-weight: 700;
+}
+
+.imageContainer5 .imageCartIcon:hover {
+  background-color: #181361;
+  font-weight: 700;
+}
+
+.imageContainer6 .imageCartIcon:hover {
   background-color: #181361;
   font-weight: 700;
 }
@@ -658,7 +800,6 @@ footer {
 
 .otherCat {
   width: 25rem;
-  
 }
 
 /*SALE SECTION*/
@@ -1338,23 +1479,7 @@ form.example::after {
   margin-right: 20px;
 }
 
-.quickView {
-  position: absolute;
-  left: 50%;
-  bottom: 42%;
-  transform: translate(-50%);
-  padding-bottom: 10px;
-  color: white;
-  width: 100%;
-  background-color: #191464;
-  height: 50px;
-  opacity: 0.8;
-  text-align: center;
-  padding-top: 13px;
-  font-family: Poppins, sans-serif;
 
-  /* display: none; */
-}
 .quickView:hover {
   opacity: 1;
 }
@@ -1665,10 +1790,6 @@ footer {
   padding-left: 1rem;
 }
 
-.otherCat {
-  width: 25rem;
-  
-}
 
 /*SALE SECTION*/
 #bigsale {
