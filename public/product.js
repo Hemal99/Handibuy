@@ -286,8 +286,7 @@ $(document).ready(function () {
 
           const imageContainer =
             document.getElementsByClassName("imageContainer1");
-          const imageContainer2 =
-            document.getElementsByClassName("imageContainer2");
+         
           const quickView = document.getElementsByClassName("quickView");
 
           const image = document.getElementsByClassName("card-img-top");
@@ -338,40 +337,7 @@ $(document).ready(function () {
             });
           }
 
-          for (let i = 0; i < imageContainer2.length; i++) {
-            imageContainer2[i].addEventListener("mouseover", () => {
-              // quickView[0].classList.add("visible");
-
-              image[i].src =
-                dataList[i].images.length > 1
-                  ? dataList[i].images[1].src
-                  : dataList[i].images[0].src;
-
-              span.className = "imageCartIcon";
-
-              icon.className = "fal fa-shopping-bag";
-
-              span.appendChild(icon);
-              imageContainer2[i].appendChild(span);
-
-              newSpan.className = "quickView";
-              newSpan.setAttribute("data-toggle", "modal");
-              newSpan.setAttribute("data-target", "#exampleModalCenter");
-              newSpan.textContent = "Quick View";
-
-              imageContainer2[i].appendChild(newSpan);
-            });
-
-            imageContainer2[i].addEventListener("mouseout", () => {
-              // quickView[0].classList.remove("visible");
-              span.className = "";
-              icon.className = "";
-              newSpan.className = "";
-              newSpan.textContent = "";
-              image[i].src =
-                dataList[i].images.length && dataList[i].images[0].src;
-            });
-          }
+         
         });
     } catch (error) {
       console.log(error);
