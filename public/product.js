@@ -21,6 +21,7 @@ $(document).ready(function () {
   let auth = basicAuth(wooClientKey, wooClientSecret);
 
   const displayModal = (data) => {
+   
     modalContent.innerHTML = "";
     console.log("prod data=======", data);
     const ele = document.createElement("div");
@@ -32,7 +33,7 @@ $(document).ready(function () {
 
     let discount =
       ((data.regular_price - data.sale_price) / data.regular_price) * 100;
-    discount = Math.ceil(discount);
+    discount = Math.floor(discount);
     function numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -57,7 +58,7 @@ $(document).ready(function () {
   class="card-img-top-2"
   src=${data.images.length && data.images[0].src}
   alt="Card image cap"
- 
+  loading="lazy"
  />
 
 
@@ -123,7 +124,7 @@ $(document).ready(function () {
             text-transform: uppercase; color:#6c757d">CATEGORIES:</span><span><a href="" style="font-size: .8rem; color: #222529; font-weight: 700;  letter-spacing: -.015em;">${category}</a></span></div>
           <hr class="solid">
           <div>
-            <button type="button" class="btnMinus">-</button><input type="number" id="quantity_60cc6a6f614d8" class="input-text qty text inputBtn" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" placeholder="" inputmode="numeric" style="justify-content: center;"><button type="button" class="btnPlus">+</button>
+            <button   type="button" class="btnMinus">-</button><input type="number" id="number" class="input-text qty text inputBtn" step="1" min="1" max="10" name="quantity" value="1" title="Qty" size="4" placeholder="" inputmode="numeric" style="justify-content: center;"><button  type="button" class="btnPlus" onClick="incrementValue()">+</button>
             <span><button type="submit" name="add-to-cart" value="4334" class="single_add_to_cart_button button alt"><span class="">
               <i class="fal fa-shopping-bag" style=" font-weight: 400; margin-right: 10px;"></i>
             </span>Add to cart</button></span>
@@ -144,8 +145,24 @@ $(document).ready(function () {
      
     </div>
     
-  </div>
+    </div>
     `;
+
+    const btnPlus = document.getElementById('number')
+    console.log("btn",btnPlus)
+
+    
+
+//     function incrementValue()
+//   {
+//     var value = parseInt(document.getElementById('number').value, 10);
+//     value = isNaN(value) ? 0 : value;
+//     value++;
+//     document.getElementById('number').value = value;
+// } 
+
+//   btnPlus.addEventListener('click',incrementValue)
+   
 
     modalContent.appendChild(ele);
   };
@@ -170,7 +187,7 @@ $(document).ready(function () {
             let discount =
               ((data.regular_price - data.sale_price) / data.regular_price) *
               100;
-            discount = Math.ceil(discount);
+            discount = Math.floor(discount);
             function numberWithCommas(x) {
               return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
@@ -370,7 +387,7 @@ $(document).ready(function () {
             let discount =
               ((data.regular_price - data.sale_price) / data.regular_price) *
               100;
-            discount = Math.ceil(discount);
+            discount = Math.floor(discount);
 
             function numberWithCommas(x) {
               return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -569,7 +586,7 @@ $(document).ready(function () {
             let disCountEle;
             let discount =
               ((data.regular_price - matches[0]) / data.regular_price) * 100;
-            discount = Math.ceil(discount);
+            discount = Math.floor(discount);
             function numberWithCommas(x) {
               return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
@@ -593,7 +610,7 @@ $(document).ready(function () {
               class="card-img-top-3"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
-             
+              loading="lazy"
              /></a>
           
              ${disCountEle}
@@ -768,7 +785,7 @@ $(document).ready(function () {
             let discount =
               ((data.regular_price - data.sale_price) / data.regular_price) *
               100;
-            discount = Math.ceil(discount);
+            discount = Math.floor(discount);
 
             function numberWithCommas(x) {
               return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -792,7 +809,7 @@ $(document).ready(function () {
               class="card-img-top-4"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
-             
+              loading="lazy"
              />
           
             ${disCountEle}
@@ -965,7 +982,7 @@ $(document).ready(function () {
             let discount =
               ((data.regular_price - data.sale_price) / data.regular_price) *
               100;
-            discount = Math.ceil(discount);
+            discount = Math.floor(discount);
             function numberWithCommas(x) {
               return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
@@ -987,7 +1004,7 @@ $(document).ready(function () {
               class="card-img-top-5"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
-             
+              loading="lazy"
              />
           
            ${disCountEle}
@@ -1161,7 +1178,7 @@ $(document).ready(function () {
             let discount =
               ((data.regular_price - data.sale_price) / data.regular_price) *
               100;
-            discount = Math.ceil(discount);
+            discount = Math.floor(discount);
             function numberWithCommas(x) {
               return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
@@ -1183,7 +1200,7 @@ $(document).ready(function () {
               class="card-img-top-6"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
-             
+              loading="lazy"
              />
           
           ${disCountEle}

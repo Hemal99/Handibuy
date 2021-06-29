@@ -28,7 +28,7 @@
     
     <title>HandyBuy.lk</title>
   </head>
-  <body>
+  <body class='body'>
     <div
       id="sale"
       class="row justify-content-center"
@@ -71,7 +71,7 @@
             
               <ul class="navbar-nav ml-auto" style="margin-top: 1rem; margin-left:3rem; margin-right: 2rem;">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#" style="font-size: 0.8rem"
+                  <a class="nav-link" href="https://handybuy.lk/my-account/" style="font-size: 0.8rem"
                     >My Account <span class="sr-only">(current)</span></a
                   >
                 </li>
@@ -87,7 +87,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#" style="font-size: 0.8rem"
-                    >Log in</a
+                  type="button" data-toggle="modal" data-target="#exampleModalCenter2" >Log in</a
                   >
                 </li>
                 <span
@@ -132,7 +132,7 @@
               </div>
               <div class="col-4 col-md-3 col-lg-2 cart">
                 <span>
-                  <button class="cartButton">
+                  <button class="cartButton" onclick="openCart()">
                     <i class="bi bi-bag" ></i>
                   </button>
                 </span>
@@ -463,7 +463,7 @@
             <span class="item2">ALL NEW FASHION BRANDS ITEMS UP TO 70% OFF <span style="font-size: 0.825rem;">Online Purchases Only</span></span>
           </div>
           <div class="col-sm-12 col-md-2" class='viewSaleDev' >
-           <button class="item3 ">VIEW SALE</button>
+          <a href="https://handybuy.lk/sale-products/"><button class="item3 ">VIEW SALE</button></a>
           </div>
         </div>
         
@@ -1112,26 +1112,95 @@
 
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#"><span ></span><i class="fas fa-bars"></i> </span> Categories</a>
+      <a href="https://handybuy.lk/shop/"><span ></span><i class="fas fa-bars"></i> </span> Categories</a>
       <div>
         <input type="text" placeholder="Search.." name="search" style="background-color:  #282e36; color: white; border: 0; padding: 8px 8px 8px 32px; width: 70%;" >
         <button type="submit" style="background-color: #282e36; color: white; border: 0; padding: 8px 8px 8px 8px;"><i class="fa fa-search"></i></button>
       </div>
-      <a href="#">Grocery</a>
-      <a href="#">Cakes & Bakes</a>
-      <a href="#">Furniture / Home & Garden</a>
-      <a href="#">Health & Beauty</a>
-      <a href="#">Fashion</a>
-      <a href="#">Mobile & Tablets</a>
-      <a href="#">Handicrafts</a>
-      <a href="#">sports</a>
-      <a href="#">new arrivals</a>
-      <a href="#">sale</a>
+      <a href="https://handybuy.lk/product-category/foodandessential/">Grocery</a>
+      <a href="https://handybuy.lk/product-category/cake-and-bakes/">Cakes & Bakes</a>
+      <a href="https://handybuy.lk/product-category/homeandgarden/">Furniture / Home & Garden</a>
+      <a href="https://handybuy.lk/product-category/healthandbeauty/">Health & Beauty</a>
+      <a href="https://handybuy.lk/product-category/fashion/">Fashion</a>
+      <a href="https://handybuy.lk/product-category/electric/mobile-phone-accessories/">Mobile & Tablets</a>
+      <a href="https://handybuy.lk/product-category/handicrafts/">Handicrafts</a>
+      <a href="https://handybuy.lk/product-category/sports/">sports</a>
+      <a href="https://handybuy.lk/shop/?orderby=date">new arrivals</a>
+      <a href="https://handybuy.lk/sale-products/">sale</a>
       <a href="#" style="padding-top: 15px;">my account</a>
-      <a href="#">cart</a>
-      <a href="#">contact us</a>
+      <a href="https://handybuy.lk/cart/">cart</a>
+      <a href="https://handybuy.lk/contact-us/">contact us</a>
       <a href="#">log in</a>
     </div>
+
+     <div id="myCart">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeCart()">&times;</a>
+      <div  class="justify-content-center">
+       <span style='font-family: Poppins,sans-serif;font-weight: 700;margin-left:30px;font-size:20px '>Shopping cart</span>
+      </div>
+     
+        <div class='card items'style="width:100%; margin-top:20px ">
+         <div class='row' >
+            <div class='col-8 col-md-8 col-lg-8' style="padding-top: 20px; padding-left: 25px;">
+              <div >Name</div>
+              <div>Sale by : HandyBuy.lk</div>
+              <div>amount x price</div>
+            </div>
+            <div class='col-4 col-md-4 col-lg-4' style="padding: 0;">
+                <img  width=100% src='https://handybuy.lk/wp-content/uploads/2019/03/DSC04674-copy-259x259.jpg' />
+            </div>
+          </div> 
+          <hr class="solid" style="margin-left: 20px; margin-right: 20px;">
+          <div style="padding-right: 10px; padding-left: 10px;">
+            <span><button type="submit" name="add-to-cart" value="4334" class="single_add_to_cart_button button alt" style="width: 100%; font-size: 12px;font-family: Poppins,sans-serif; background-color: #e7e7e7; color:#222529;border-color:#e7e7e7 ; border: 0;">VIEW CART</button></span>
+          </div>
+          <div style="margin-top: 10px; padding-right: 10px; padding-left: 10px;">
+            <span><button type="submit" name="add-to-cart" value="4334" class="single_add_to_cart_button button alt" style="width: 100%;font-family: Poppins,sans-serif;font-size: 12px;background-color:#222529; color: #e7e7e7; border: 0;">CHECKOUT</button></span>
+          </div>
+        </div>
+    
+      
+     </div>
+
+     <!--Login Modal-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: Poppins,sans-serif; font-weight: 600;">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1" style="font-family: Poppins,sans-serif; color:#777">Username or email address<span style="color: red;"> *</span></label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+            
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" style="font-family: Poppins,sans-serif; color:#777">Password<span style="color: red;"> *</span></label>
+            <input type="password" class="form-control" id="exampleInputPassword1" >
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <div class="row">
+              <div class="col-12 col-md-7"><label class="form-check-label" for="exampleCheck1" style="font-family: Poppins,sans-serif; font-size: 13px;color:#777">Remember me</label></div>
+              <div class="col-12 col-md-5"><span><a href="https://handybuy.lk/my-account/lost-password/" style="color: black; font-family: Poppins,sans-serif; font-size: 15px; font-weight: 600;">Forgot Password?</a></span></div>
+            </div>
+         
+           
+          </div>
+          <button type="submit" name="add-to-cart" value="4334" class="single_add_to_cart_button button alt" style="width: 100%;font-family: Poppins,sans-serif;font-size: 12px;background-color:#222529; color: #e7e7e7; border: 0; margin-top: 20px;">LOGIN</button>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
 
     <script src="./glider.min.js"></script>
     <script src="./app.js"></script>

@@ -39,3 +39,17 @@ function closeNav() {
  
 };
 
+
+//cart nav
+function openCart() {
+  document.getElementById("myCart").style.width = "280px";
+  
+ // document.getElementsByClassName('body')[0].classList.toggle('half-black')
+
+}
+
+function closeCart() {
+  document.getElementById("myCart").style.width = "0";
+  document.getElementById('body').style.opacity=1
+ 
+};
