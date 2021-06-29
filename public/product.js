@@ -11,6 +11,7 @@ $(document).ready(function () {
   //topTenProducts.classList.add('glider-track')
   const card = document.querySelector("card");
   const otherCat = document.getElementById("otherCategories");
+  const modalContent = document.getElementById("modalContent");
 
   function basicAuth(key, secret) {
     let hash = btoa(key + ":" + secret);
@@ -18,6 +19,136 @@ $(document).ready(function () {
   }
 
   let auth = basicAuth(wooClientKey, wooClientSecret);
+
+  const displayModal = (data) => {
+    modalContent.innerHTML = "";
+    console.log("prod data=======", data);
+    const ele = document.createElement("div");
+    let category = `${data.categories[0].name}`;
+    let subImage =``
+
+    let h5='';
+    let disCountEle='';
+
+    let discount =
+      ((data.regular_price - data.sale_price) / data.regular_price) * 100;
+    discount = Math.ceil(discount);
+    function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    let regular_price = numberWithCommas(data.regular_price);
+    let sale_price = numberWithCommas(data.sale_price);
+    if (data.on_sale) {
+      h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${regular_price}.00</del> Rs.${sale_price}.00</span></h5>`;
+      disCountEle = ` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`;
+    } else {
+      h5 = `<h5><span style="font-weight: 600;">Rs.${regular_price}.00</span></h5>`;
+      disCountEle = "";
+    }
+
+    for (let i = 1; i < data.categories.length; i++) {
+      category += `${data.categories[i].name}`;
+    }
+
+    let imageDiv = ` <div class="carousel-item active">
+    <div class='imageContainer2'>
+  <img
+  class="card-img-top-2"
+  src=${data.images.length && data.images[0].src}
+  alt="Card image cap"
+ 
+ />
+
+
+ ${disCountEle}
+</div>
+  </div>`;
+
+    for (let i = 0; i < data.images.length; i++) {
+      `${imageDiv}  
+    <div class="carousel-item active">
+      <img class="d-block w-100" src=${data.images[i].src}>
+    </div> `;
+    subImage+= `<img class="d-block w-100" src=${data.images[i].src}> `
+    }
+
+    ele.innerHTML = `
+    <div class="modal-content" >
+    <div class="modal-header">
+      
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width:100%; margin: 0;">
+          
+            <div class="carousel-inner">
+             
+            ${imageDiv}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="images">
+           ${subImage}
+             
+        </div>
+
+        
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6  itemName">
+          <h2>   <a href=""> ${data.name}</a></h2>
+          <div>
+            <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
+            <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
+            <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
+            <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
+            <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
+          </div>
+          <div class="modalPrice">${h5}</div>
+          <div class="description">${data.short_description}</div>
+          
+          <div><span style="font-size: .8rem; letter-spacing: .015em;
+            text-transform: uppercase; color:#6c757d">CATEGORIES:</span><span><a href="" style="font-size: .8rem; color: #222529; font-weight: 700;  letter-spacing: -.015em;">${category}</a></span></div>
+          <hr class="solid">
+          <div>
+            <button type="button" class="btnMinus">-</button><input type="number" id="quantity_60cc6a6f614d8" class="input-text qty text inputBtn" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" placeholder="" inputmode="numeric" style="justify-content: center;"><button type="button" class="btnPlus">+</button>
+            <span><button type="submit" name="add-to-cart" value="4334" class="single_add_to_cart_button button alt"><span class="">
+              <i class="fal fa-shopping-bag" style=" font-weight: 400; margin-right: 10px;"></i>
+            </span>Add to cart</button></span>
+          </div>
+          <hr class="solid">
+          <div class="product-share" style="margin-top: 20px;">
+            <div class="share-links" >
+            <span><a href="https://www.facebook.com/sharer.php?u=https://handybuy.lk/product/andrea-hair-oil/"  style="text-decoration: none;"><i class="fab fa-facebook-f facebookIcon"></i></a></span>
+            <span class=""><a href="https://www.facebook.com/sharer.php?u=https://handybuy.lk/product/andrea-hair-oil/"  style="text-decoration: none;"><i class="bi bi-twitter twiterIcon" ></i></a></span>
+            <span class=""><a href="https://www.facebook.com/sharer.php?u=https://handybuy.lk/product/andrea-hair-oil/"  style="text-decoration: none;"><i class="fab fa-linkedin-in linkdinIcon"></i></a></span>
+            <span class=""><a href="https://www.facebook.com/sharer.php?u=https://handybuy.lk/product/andrea-hair-oil/"  style="text-decoration: none;"><i class="fab fa-google-plus-g googleplusIcon"></i></a></span>
+            <span class=""><a href="https://www.facebook.com/sharer.php?u=https://handybuy.lk/product/andrea-hair-oil/"  style="text-decoration: none;"><i class="fas fa-envelope gmailIcon" ></i></a></span> 
+          </div>
+        </div>
+        </div>
+        
+      </div>
+     
+    </div>
+    
+  </div>
+    `;
+
+    modalContent.appendChild(ele);
+  };
 
   function getProducts(wooUrl, element) {
     try {
@@ -28,38 +159,48 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-     
-          for (const [i,data] of dataList.entries()) {
-
+          for (const [i, data] of dataList.entries()) {
             const prodEl = document.createElement("div");
 
             prodEl.className = "card";
             prodEl.style = "width: 18rem; margin: 5px;cursor: pointer;";
-           
+
             let h5;
             let disCountEle;
-            let discount=((data.regular_price-data.sale_price)/data.regular_price)*100;
-            discount=Math.ceil(discount)
-            if(data.on_sale){
-                h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${data.regular_price}</del> Rs.${data.sale_price}</span></h5>`
-                disCountEle =` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`
+            let discount =
+              ((data.regular_price - data.sale_price) / data.regular_price) *
+              100;
+            discount = Math.ceil(discount);
+            function numberWithCommas(x) {
+              return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
-            else{
-              h5=`<h5><span style="font-weight: 600;">Rs.${data.price}</span></h5>`
-              disCountEle =''
+
+            let regular_price = numberWithCommas(data.regular_price);
+            let sale_price = numberWithCommas(data.sale_price);
+            if (data.on_sale) {
+              h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${regular_price}.00</del> Rs.${sale_price}.00</span></h5>`;
+              disCountEle = ` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`;
+            } else {
+              h5 = `<h5><span style="font-weight: 600;">Rs.${regular_price}.00</span></h5>`;
+              disCountEle = "";
             }
 
             prodEl.innerHTML = `
            
+           
             <div class='imageContainer imageContainer1'>
-              <img
+            <a href=${data.permalink}>
+            <img
               class="card-img-top"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
              
-             />
+             /></a>
+              
           
-            <span class="imageIcon rounded-circle " style="padding-left:7.8px; padding-top: 5px; font-weight: 700;">${i+1}<sup>o</sup></span>
+            <span class="imageIcon rounded-circle " style="padding-left:7.8px; padding-top: 5px; font-weight: 700;">${
+              i + 1
+            }<sup>o</sup></span>
             ${disCountEle}
            
             </div>
@@ -72,7 +213,9 @@ $(document).ready(function () {
             <div style=" white-space: nowrap; 
             width: 100%; 
             overflow: hidden;
-            text-overflow: ellipsis;"> <a><h6 class="card-title">${data.name}</h6></a></div>
+            text-overflow: ellipsis;"> <a><h6 class="card-title">${
+              data.name
+            }</h6></a></div>
            
               <p class="card-text">
                <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
@@ -154,10 +297,11 @@ $(document).ready(function () {
           let span = document.createElement("SPAN");
           let icon = document.createElement("i");
           let newSpan = document.createElement("SPAN");
+          console.log("list----------",dataList.entries())
 
           //toggle quickView
           //Slider card hover EventListener
-          for (let i = 0; i < imageContainer.length; i++) {
+          for (const [i, data] of dataList.entries()) {
             imageContainer[i].addEventListener("mouseover", () => {
               // quickView[0].classList.add("visible");
 
@@ -179,6 +323,8 @@ $(document).ready(function () {
               newSpan.textContent = "Quick View";
 
               imageContainer[i].appendChild(newSpan);
+
+              newSpan.addEventListener("click", () => displayModal(data));
             });
 
             imageContainer[i].addEventListener("mouseout", () => {
@@ -255,30 +401,40 @@ $(document).ready(function () {
             prodEl.style = "width: 18rem; margin: 5px;cursor: pointer;";
             let h5;
             let disCountEle;
-            let discount=((data.regular_price-data.sale_price)/data.regular_price)*100;
-            discount=Math.ceil(discount)
-            if(data.on_sale){
-                h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${data.regular_price}</del> Rs.${data.sale_price}</span></h5>`
-                disCountEle =` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`
-            }
-            else{
-              h5=`<h5><span style="font-weight: 600;">Rs.${data.price}</span></h5>`
-              disCountEle =''
+            let discount =
+              ((data.regular_price - data.sale_price) / data.regular_price) *
+              100;
+            discount = Math.ceil(discount);
+
+            function numberWithCommas(x) {
+              return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
 
-          
+            let regular_price = numberWithCommas(data.regular_price);
+            let sale_price = numberWithCommas(data.sale_price);
+
+            if (data.on_sale) {
+              h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${regular_price}.00</del> Rs.${sale_price}.00</span></h5>`;
+              disCountEle = ` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`;
+            } else {
+              h5 = `<h5><span style="font-weight: 600;">Rs.${regular_price}.00</span></h5>`;
+              disCountEle = "";
+            }
+
             prodEl.innerHTML = `
            
             <div class='imageContainer2'>
-              <img
+            <a href=${data.permalink}>
+            <img
               class="card-img-top-2"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
              
-             />
+             /></a>
+              
           
             
-            ${disCountEle}
+             ${disCountEle}
             </div>
             <div class="card-body" style="cursor: pointer;">
             <div style=" white-space: nowrap; 
@@ -288,7 +444,9 @@ $(document).ready(function () {
             <div style=" white-space: nowrap; 
             width: 100%; 
             overflow: hidden;
-            text-overflow: ellipsis;"> <a><h6 class="card-title">${data.name}</h6></a></div>
+            text-overflow: ellipsis;"> <a><h6 class="card-title">${
+              data.name
+            }</h6></a></div>
               <p class="card-text">
                <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
               </p>
@@ -372,7 +530,7 @@ $(document).ready(function () {
 
           //toggle quickView
 
-          for (let i = 0; i < imageContainer2.length; i++) {
+          for (const [i, data] of dataList.entries()) {
             imageContainer2[i].addEventListener("mouseover", () => {
               // quickView[0].classList.add("visible");
 
@@ -392,8 +550,11 @@ $(document).ready(function () {
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
+              
 
               imageContainer2[i].appendChild(newSpan);
+              newSpan.addEventListener("click", () => displayModal(data));
+              
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -435,35 +596,39 @@ $(document).ready(function () {
           for (const data of dataList) {
             const prodEl = document.createElement("div");
 
-          
-
             prodEl.className = "card";
             prodEl.style = "width: 18rem; margin: 5px;cursor: pointer;";
 
             const matches = data.sale_price.match(/(\d+)/);
             let disCountEle;
-            let discount=((data.regular_price-matches[0])/data.regular_price)*100;
-            discount=Math.ceil(discount)
-            if(data.on_sale){
-                h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${data.regular_price}</del> Rs.${matches[0]}</span></h5>`
-                disCountEle =` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`
-            }
-            else{
-              h5=`<h5><span style="font-weight: 600;">Rs.${data.price}</span></h5>`
-              disCountEle =''
+            let discount =
+              ((data.regular_price - matches[0]) / data.regular_price) * 100;
+            discount = Math.ceil(discount);
+            function numberWithCommas(x) {
+              return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
 
-        
+            let regular_price = numberWithCommas(data.regular_price);
+            let sale_price = numberWithCommas(matches[0]);
+
+            if (data.on_sale) {
+              h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${regular_price}.00</del> Rs.${sale_price}.00</span></h5>`;
+              disCountEle = ` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`;
+            } else {
+              h5 = `<h5><span style="font-weight: 600;">Rs.${data.price}.00</span></h5>`;
+              disCountEle = "";
+            }
 
             prodEl.innerHTML = `
            
             <div class='imageContainer3'>
-              <img
+            <a href=${data.permalink}>
+            <img
               class="card-img-top-3"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
              
-             />
+             /></a>
           
              ${disCountEle}
            
@@ -477,7 +642,9 @@ $(document).ready(function () {
             <div style=" white-space: nowrap; 
             width: 100%; 
             overflow: hidden;
-            text-overflow: ellipsis;"> <a><h6 class="card-title">${data.name}</h6></a></div>
+            text-overflow: ellipsis;"> <a><h6 class="card-title">${
+              data.name
+            }</h6></a></div>
               <p class="card-text">
                <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
               </p>
@@ -562,7 +729,7 @@ $(document).ready(function () {
 
           //toggle quickView
 
-          for (let i = 0; i < imageContainer2.length; i++) {
+          for (const [i, data] of dataList.entries()) {
             imageContainer2[i].addEventListener("mouseover", () => {
               // quickView[0].classList.add("visible");
 
@@ -584,6 +751,7 @@ $(document).ready(function () {
               newSpan.textContent = "Quick View";
 
               imageContainer2[i].appendChild(newSpan);
+              newSpan.addEventListener("click", () => displayModal(data));
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -631,18 +799,25 @@ $(document).ready(function () {
 
             let h5;
             let disCountEle;
-            let discount=((data.regular_price-data.sale_price)/data.regular_price)*100;
-            discount=Math.ceil(discount)
-            if(data.on_sale){
-                h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${data.regular_price}</del> Rs.${data.sale_price}</span></h5>`
-                disCountEle =` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`
-            }
-            else{
-              h5=`<h5><span style="font-weight: 600;">Rs.${data.price}</span></h5>`
-              disCountEle =''
+            let discount =
+              ((data.regular_price - data.sale_price) / data.regular_price) *
+              100;
+            discount = Math.ceil(discount);
+
+            function numberWithCommas(x) {
+              return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
 
-          
+            let regular_price = numberWithCommas(data.regular_price);
+            let sale_price = numberWithCommas(data.sale_price);
+
+            if (data.on_sale) {
+              h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${regular_price}.00</del> Rs.${sale_price}.00</span></h5>`;
+              disCountEle = ` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`;
+            } else {
+              h5 = `<h5><span style="font-weight: 600;">Rs.${regular_price}.00</span></h5>`;
+              disCountEle = "";
+            }
 
             prodEl.innerHTML = `
            
@@ -665,7 +840,9 @@ $(document).ready(function () {
             <div style=" white-space: nowrap; 
             width: 100%; 
             overflow: hidden;
-            text-overflow: ellipsis;"> <a><h6 class="card-title">${data.name}</h6></a></div>
+            text-overflow: ellipsis;"> <a><h6 class="card-title">${
+              data.name
+            }</h6></a></div>
               <p class="card-text">
                <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
               </p>
@@ -735,8 +912,7 @@ $(document).ready(function () {
             ],
           });
 
-          const imageContainer2 =
-            document.getElementsByClassName("imageContainer4");
+          const imageContainer2 =document.getElementsByClassName("imageContainer4");
           const quickView = document.getElementsByClassName("quickView");
 
           const image = document.getElementsByClassName("card-img-top-4");
@@ -749,7 +925,7 @@ $(document).ready(function () {
 
           //toggle quickView
 
-          for (let i = 0; i < imageContainer2.length; i++) {
+          for (const [i, data] of newData.entries()) {
             imageContainer2[i].addEventListener("mouseover", () => {
               // quickView[0].classList.add("visible");
 
@@ -771,6 +947,7 @@ $(document).ready(function () {
               newSpan.textContent = "Quick View";
 
               imageContainer2[i].appendChild(newSpan);
+              newSpan.addEventListener("click", () => displayModal(data));
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -791,7 +968,6 @@ $(document).ready(function () {
     }
   }
 
-  
   function getClothing(wooUrl, element) {
     try {
       fetch(wooUrl, {
@@ -818,17 +994,24 @@ $(document).ready(function () {
             prodEl.style = "width: 18rem; margin: 5px;cursor: pointer;";
 
             let h5;
-           
+
             let disCountEle;
-            let discount=((data.regular_price-data.sale_price)/data.regular_price)*100;
-            discount=Math.ceil(discount)
-            if(data.on_sale){
-                h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${data.regular_price}</del> Rs.${data.sale_price}</span></h5>`
-                disCountEle =` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`
+            let discount =
+              ((data.regular_price - data.sale_price) / data.regular_price) *
+              100;
+            discount = Math.ceil(discount);
+            function numberWithCommas(x) {
+              return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
-            else{
-              h5=`<h5><span style="font-weight: 600;">Rs.${data.price}</span></h5>`
-              disCountEle =''
+
+            let regular_price = numberWithCommas(data.regular_price);
+            let sale_price = numberWithCommas(data.sale_price);
+            if (data.on_sale) {
+              h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${regular_price}.00</del> Rs.${sale_price}.00</span></h5>`;
+              disCountEle = ` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`;
+            } else {
+              h5 = `<h5><span style="font-weight: 600;">Rs.${regular_price}.00</span></h5>`;
+              disCountEle = "";
             }
 
             prodEl.innerHTML = `
@@ -852,7 +1035,9 @@ $(document).ready(function () {
             <div style=" white-space: nowrap; 
             width: 100%; 
             overflow: hidden;
-            text-overflow: ellipsis;"> <a><h6 class="card-title">${data.name}</h6></a></div>
+            text-overflow: ellipsis;"> <a><h6 class="card-title">${
+              data.name
+            }</h6></a></div>
               <p class="card-text">
                <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
               </p>
@@ -936,7 +1121,7 @@ $(document).ready(function () {
 
           //toggle quickView
 
-          for (let i = 0; i < imageContainer2.length; i++) {
+          for (const [i, data] of newData.entries()) {
             imageContainer2[i].addEventListener("mouseover", () => {
               // quickView[0].classList.add("visible");
 
@@ -958,6 +1143,7 @@ $(document).ready(function () {
               newSpan.textContent = "Quick View";
 
               imageContainer2[i].appendChild(newSpan);
+              newSpan.addEventListener("click", () => displayModal(data));
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -1004,19 +1190,25 @@ $(document).ready(function () {
             prodEl.style = "width: 18rem; margin: 5px;cursor: pointer;";
 
             let h5;
- 
+
             let disCountEle;
-            let discount=((data.regular_price-data.sale_price)/data.regular_price)*100;
-            discount=Math.ceil(discount)
-            if(data.on_sale){
-                h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${data.regular_price}</del> Rs.${data.sale_price}</span></h5>`
-                disCountEle =` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`
-            }
-            else{
-              h5=`<h5><span style="font-weight: 600;">Rs.${data.price}</span></h5>`
-              disCountEle =''
+            let discount =
+              ((data.regular_price - data.sale_price) / data.regular_price) *
+              100;
+            discount = Math.ceil(discount);
+            function numberWithCommas(x) {
+              return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
 
+            let regular_price = numberWithCommas(data.regular_price);
+            let sale_price = numberWithCommas(data.sale_price);
+            if (data.on_sale) {
+              h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${regular_price}.00</del> Rs.${sale_price}.00</span></h5>`;
+              disCountEle = ` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`;
+            } else {
+              h5 = `<h5><span style="font-weight: 600;">Rs.${regular_price}.00</span></h5>`;
+              disCountEle = "";
+            }
 
             prodEl.innerHTML = `
            
@@ -1039,7 +1231,9 @@ $(document).ready(function () {
             <div style=" white-space: nowrap; 
             width: 100%; 
             overflow: hidden;
-            text-overflow: ellipsis;"> <a><h6 class="card-title">${data.name}</h6></a></div>
+            text-overflow: ellipsis;"> <a><h6 class="card-title">${
+              data.name
+            }</h6></a></div>
               <p class="card-text">
                <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
               </p>
@@ -1123,7 +1317,7 @@ $(document).ready(function () {
 
           //toggle quickView
 
-          for (let i = 0; i < imageContainer2.length; i++) {
+          for (const [i, data] of newData.entries()) {
             imageContainer2[i].addEventListener("mouseover", () => {
               // quickView[0].classList.add("visible");
 
@@ -1145,6 +1339,7 @@ $(document).ready(function () {
               newSpan.textContent = "Quick View";
 
               imageContainer2[i].appendChild(newSpan);
+              newSpan.addEventListener("click", () => displayModal(data));
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -1214,6 +1409,5 @@ $(document).ready(function () {
     products.push(cakes);
   };
 
- 
   getOtherProducts();
 });

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
+
+
 .navbar-nav > li {
   padding-left: 10px;
   padding-right: 10px;
@@ -1889,7 +1891,7 @@ footer {
 }
 
 .description{
-  font-size: 1.1428em;
+  font-size: 1em;
   line-height:2.6rem;
   font-weight: 600;
   letter-spacing: -.015em;
