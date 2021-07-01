@@ -12,6 +12,9 @@ $(document).ready(function () {
   const card = document.querySelector("card");
   const otherCat = document.getElementById("otherCategories");
   const modalContent = document.getElementById("modalContent");
+  const cart = document.getElementById("myCart");
+
+ 
 
   function basicAuth(key, secret) {
     let hash = btoa(key + ":" + secret);
@@ -20,16 +23,46 @@ $(document).ready(function () {
 
   let auth = basicAuth(wooClientKey, wooClientSecret);
 
+  const addToCart = (data) => {
+    const ele = document.createElement("div");
+
+    ele.innerHTML = `
+    <div class='cardItems'style="width:100%; margin-top:20px ">
+    <div class='row' >
+       <div class='col-8 col-md-8 col-lg-8' style="padding-top: 20px; padding-left: 25px;">
+         <div style=" white-space: nowrap; 
+         width: 100%; 
+         overflow: hidden;
+         text-overflow: ellipsis;"> <a><h6 class="card-title">${data.name}</div>
+         <div>Sale by : HandyBuy.lk</div>
+         <div>amount x price</div>
+       </div>
+       <div class='col-4 col-md-4 col-lg-4' style="padding: 0;">
+           <img  width=100%  src=${data.images.length && data.images[0].src} />
+       </div>
+     </div> 
+     <hr class="solid" style="margin-left: 20px; margin-right: 20px;">
+     <div style="padding-right: 10px; padding-left: 10px;">
+       <span><button type="submit" name="add-to-cart" value="4334" class="single_add_to_cart_button button alt" style="width: 100%; font-size: 12px;font-family: Poppins,sans-serif; background-color: #e7e7e7; color:#222529;border-color:#e7e7e7 ; border: 0;">VIEW CART</button></span>
+     </div>
+     <div style="margin-top: 10px; padding-right: 10px; padding-left: 10px;">
+       <span><button type="submit" name="add-to-cart" value="4334" class="single_add_to_cart_button button alt" style="width: 100%;font-family: Poppins,sans-serif;font-size: 12px;background-color:#222529; color: #e7e7e7; border: 0;">CHECKOUT</button></span>
+     </div>
+   </div>
+    `;
+
+    cart.appendChild(ele);
+  };
+
   const displayModal = (data) => {
-   
     modalContent.innerHTML = "";
     console.log("prod data=======", data);
     const ele = document.createElement("div");
     let category = `${data.categories[0].name}`;
-    let subImage =``
+    let subImage = ``;
 
-    let h5='';
-    let disCountEle='';
+    let h5 = "";
+    let disCountEle = "";
 
     let discount =
       ((data.regular_price - data.sale_price) / data.regular_price) * 100;
@@ -71,7 +104,7 @@ $(document).ready(function () {
     <div class="carousel-item active">
       <img class="d-block w-100" src=${data.images[i].src}>
     </div> `;
-    subImage+= `<img class="d-block w-100" src=${data.images[i].src}> `
+      subImage += `<img class="d-block w-100" src=${data.images[i].src}> `;
     }
 
     ele.innerHTML = `
@@ -148,27 +181,28 @@ $(document).ready(function () {
     </div>
     `;
 
-    const btnPlus = document.getElementById('number')
-    console.log("btn",btnPlus)
+    const btnPlus = document.getElementById("number");
+    console.log("btn", btnPlus);
 
-    
+    //     function incrementValue()
+    //   {
+    //     var value = parseInt(document.getElementById('number').value, 10);
+    //     value = isNaN(value) ? 0 : value;
+    //     value++;
+    //     document.getElementById('number').value = value;
+    // }
 
-//     function incrementValue()
-//   {
-//     var value = parseInt(document.getElementById('number').value, 10);
-//     value = isNaN(value) ? 0 : value;
-//     value++;
-//     document.getElementById('number').value = value;
-// } 
-
-//   btnPlus.addEventListener('click',incrementValue)
-   
+    //   btnPlus.addEventListener('click',incrementValue)
 
     modalContent.appendChild(ele);
   };
 
-  function getProducts(wooUrl, element) {
+   function getProducts(wooUrl, element) {
     try {
+      let loader = `<div id="loader"></div>`;
+      element.innerHTML=loader;
+      
+     
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
       })
@@ -176,11 +210,17 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          for (const [i, data] of dataList.entries()) {
-            const prodEl = document.createElement("div");
+          let loadIcon = document.getElementById('loader');
+          loadIcon.remove();
 
+          for (const [i, data] of dataList.entries()) {
+            
+            const prodEl = document.createElement("div");
+            let loader = `<div class="loader"></div>`;
+          
             prodEl.className = "card";
             prodEl.style = "width: 18rem; margin: 5px;cursor: pointer;";
+            prodEl.innerHTML=loader
 
             let h5;
             let disCountEle;
@@ -202,9 +242,14 @@ $(document).ready(function () {
               disCountEle = "";
             }
 
+            
+
+            //get Images thumbnail
+            
+
+            //let newImage= resizeImg(data.images[0].src,100,100,0)
+
             prodEl.innerHTML = `
-           
-           
             <div class='imageContainer imageContainer1'>
             <a href=${data.permalink}>
             <img
@@ -213,8 +258,6 @@ $(document).ready(function () {
               alt="Card image cap"
              
              /></a>
-              
-          
             <span class="imageIcon rounded-circle " style="padding-left:7.8px; padding-top: 5px; font-weight: 700;">${
               i + 1
             }<sup>o</sup></span>
@@ -247,8 +290,11 @@ $(document).ready(function () {
               <div>${h5}</div>
             </div>
          `;
-
+           
+           
             element.appendChild(prodEl);
+          
+           
           }
           new Glider(element, {
             slidesToShow: "auto",
@@ -303,7 +349,7 @@ $(document).ready(function () {
 
           const imageContainer =
             document.getElementsByClassName("imageContainer1");
-         
+
           const quickView = document.getElementsByClassName("quickView");
 
           const image = document.getElementsByClassName("card-img-top");
@@ -313,7 +359,8 @@ $(document).ready(function () {
           let span = document.createElement("SPAN");
           let icon = document.createElement("i");
           let newSpan = document.createElement("SPAN");
-          console.log("list----------",dataList.entries())
+          let link = document.createElement("a");
+          console.log("list----------", dataList.entries());
 
           //toggle quickView
           //Slider card hover EventListener
@@ -340,7 +387,14 @@ $(document).ready(function () {
 
               imageContainer[i].appendChild(newSpan);
 
-              newSpan.addEventListener("click", () => displayModal(data));
+              // newSpan.addEventListener("click", () => displayModal(data));
+              //span.addEventListener("click", () => addToCart(data));
+              span.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+              newSpan.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
             });
 
             imageContainer[i].addEventListener("mouseout", () => {
@@ -353,8 +407,6 @@ $(document).ready(function () {
                 dataList[i].images.length && dataList[i].images[0].src;
             });
           }
-
-         
         });
     } catch (error) {
       console.log(error);
@@ -363,20 +415,20 @@ $(document).ready(function () {
 
   function getProductNew(wooUrl, element) {
     try {
-      // const response = await fetch(wooUrl, {
-      //     headers: {"Authorization": basicAuth(wooClientKey, wooClientSecret)}
-      // });
-      // return await response.json();
+      let loader = `<div id="loader"></div>`;
+      element.innerHTML=loader;
+     
 
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
       })
         .then(function (response) {
-          // The response is a Response instance.
-          // You parse the data into a useable format using .json()
+       
           return response.json();
         })
         .then(function (dataList) {
+          let loadIcon = document.getElementById('loader');
+          loadIcon.remove();
           for (const data of dataList) {
             const prodEl = document.createElement("div");
 
@@ -414,9 +466,7 @@ $(document).ready(function () {
               alt="Card image cap"
              
              /></a>
-              
-          
-            
+
              ${disCountEle}
             </div>
             <div class="card-body" style="cursor: pointer;">
@@ -457,8 +507,8 @@ $(document).ready(function () {
             dots: "#dots",
             rewind: true,
             arrows: {
-              prev: ".glider-prev",
-              next: ".glider-next",
+              prev: ".glider-prev-1",
+              next: ".glider-next-1",
             },
             responsive: [
               {
@@ -533,11 +583,15 @@ $(document).ready(function () {
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
-              
 
               imageContainer2[i].appendChild(newSpan);
-              newSpan.addEventListener("click", () => displayModal(data));
-              
+              // newSpan.addEventListener("click", () => displayModal(data));
+              newSpan.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+              span.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -560,10 +614,9 @@ $(document).ready(function () {
 
   function getProductDeals(wooUrl, element) {
     try {
-      // const response = await fetch(wooUrl, {
-      //     headers: {"Authorization": basicAuth(wooClientKey, wooClientSecret)}
-      // });
-      // return await response.json();
+      let loader = `<div id="loader"></div>`;
+      element.innerHTML=loader;
+     
 
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
@@ -574,6 +627,8 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
+          let loadIcon = document.getElementById('loader');
+          loadIcon.remove();
           console.log("data", dataList);
 
           for (const data of dataList) {
@@ -610,7 +665,7 @@ $(document).ready(function () {
               class="card-img-top-3"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
-              loading="lazy"
+             
              /></a>
           
              ${disCountEle}
@@ -656,8 +711,8 @@ $(document).ready(function () {
             dots: "#dots",
             rewind: true,
             arrows: {
-              prev: ".glider-prev",
-              next: ".glider-next",
+              prev: ".glider-prev-2",
+              next: ".glider-next-2",
             },
             responsive: [
               {
@@ -734,7 +789,13 @@ $(document).ready(function () {
               newSpan.textContent = "Quick View";
 
               imageContainer2[i].appendChild(newSpan);
-              newSpan.addEventListener("click", () => displayModal(data));
+              // newSpan.addEventListener("click", () => displayModal(data));
+              newSpan.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+              span.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -757,6 +818,8 @@ $(document).ready(function () {
 
   function getProductHome(wooUrl, element) {
     try {
+      let loader = `<div id="loader"></div>`;
+      element.innerHTML=loader;
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
       })
@@ -764,17 +827,11 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          const newData = [];
+          let loadIcon = document.getElementById('loader');
+          loadIcon.remove();
+          
 
-          dataList.forEach((data) => {
-            data.categories.forEach((cat) => {
-              if (cat.id == 196 || cat.id == 202 || cat.id == 160) {
-                newData.push(data);
-              }
-            });
-          });
-
-          for (const data of newData) {
+          for (const data of dataList) {
             const prodEl = document.createElement("div");
 
             prodEl.className = "card";
@@ -805,12 +862,13 @@ $(document).ready(function () {
             prodEl.innerHTML = `
            
             <div class='imageContainer4'>
-              <img
+            <a href=${data.permalink}>
+            <img
               class="card-img-top-4"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
               loading="lazy"
-             />
+             /></a>
           
             ${disCountEle}
            
@@ -853,8 +911,8 @@ $(document).ready(function () {
             dots: "#dots",
             rewind: true,
             arrows: {
-              prev: ".glider-prev",
-              next: ".glider-next",
+              prev: ".glider-prev-3",
+              next: ".glider-next-3",
             },
             responsive: [
               {
@@ -895,7 +953,8 @@ $(document).ready(function () {
             ],
           });
 
-          const imageContainer2 =document.getElementsByClassName("imageContainer4");
+          const imageContainer2 =
+            document.getElementsByClassName("imageContainer4");
           const quickView = document.getElementsByClassName("quickView");
 
           const image = document.getElementsByClassName("card-img-top-4");
@@ -908,14 +967,14 @@ $(document).ready(function () {
 
           //toggle quickView
 
-          for (const [i, data] of newData.entries()) {
+          for (const [i, data] of dataList.entries()) {
             imageContainer2[i].addEventListener("mouseover", () => {
               // quickView[0].classList.add("visible");
 
               image[i].src =
-                newData[i].images && newData[i].images.length > 1
-                  ? newData[i].images[1].src
-                  : newData[i].images[0].src;
+              dataList[i].images && dataList[i].images.length > 1
+                  ? dataList[i].images[1].src
+                  : dataList[i].images[0].src;
 
               span.className = "imageCartIcon";
 
@@ -930,7 +989,13 @@ $(document).ready(function () {
               newSpan.textContent = "Quick View";
 
               imageContainer2[i].appendChild(newSpan);
-              newSpan.addEventListener("click", () => displayModal(data));
+              // newSpan.addEventListener("click", () => displayModal(data));
+              newSpan.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+              span.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -940,9 +1005,9 @@ $(document).ready(function () {
               newSpan.className = "";
               newSpan.textContent = "";
               image[i].src =
-                newData[i].images &&
-                newData[i].images.length &&
-                newData[i].images[0].src;
+              dataList[i].images &&
+              dataList[i].images.length &&
+              dataList[i].images[0].src;
             });
           }
         });
@@ -953,6 +1018,8 @@ $(document).ready(function () {
 
   function getClothing(wooUrl, element) {
     try {
+      let loader = `<div id="loader"></div>`;
+      element.innerHTML=loader;
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
       })
@@ -960,17 +1027,11 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          const newData = [];
+          let loadIcon = document.getElementById('loader');
+          loadIcon.remove();
+         
 
-          dataList.forEach((data) => {
-            data.categories.forEach((cat) => {
-              if (cat.id == 226) {
-                newData.push(data);
-              }
-            });
-          });
-
-          for (const data of newData) {
+          for (const data of dataList) {
             const prodEl = document.createElement("div");
 
             prodEl.className = "card";
@@ -1000,12 +1061,13 @@ $(document).ready(function () {
             prodEl.innerHTML = `
            
             <div class='imageContainer5'>
-              <img
+            <a href=${data.permalink}>
+            <img
               class="card-img-top-5"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
               loading="lazy"
-             />
+             /></a>
           
            ${disCountEle}
            
@@ -1048,15 +1110,15 @@ $(document).ready(function () {
             dots: "#dots",
             rewind: true,
             arrows: {
-              prev: ".glider-prev",
-              next: ".glider-next",
+              prev: ".glider-prev-4",
+              next: ".glider-next-4",
             },
             responsive: [
               {
                 breakpoint: 800,
                 settings: {
                   slidesToScroll: "auto",
-                  itemWidth: 280,
+                  itemWidth: 200,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -1104,14 +1166,14 @@ $(document).ready(function () {
 
           //toggle quickView
 
-          for (const [i, data] of newData.entries()) {
+          for (const [i, data] of dataList.entries()) {
             imageContainer2[i].addEventListener("mouseover", () => {
               // quickView[0].classList.add("visible");
 
               image[i].src =
-                newData[i].images && newData[i].images.length > 1
-                  ? newData[i].images[1].src
-                  : newData[i].images[0].src;
+              dataList[i].images && dataList[i].images.length > 1
+                  ? dataList[i].images[1].src
+                  : dataList[i].images[0].src;
 
               span.className = "imageCartIcon";
 
@@ -1120,13 +1182,19 @@ $(document).ready(function () {
               span.appendChild(icon);
               imageContainer2[i].appendChild(span);
 
-              newSpan.className = "quickView";
+              newSpan.className = "quickView-1";
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
 
               imageContainer2[i].appendChild(newSpan);
-              newSpan.addEventListener("click", () => displayModal(data));
+              //newSpan.addEventListener("click", () => displayModal(data));
+              newSpan.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+              span.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -1136,9 +1204,9 @@ $(document).ready(function () {
               newSpan.className = "";
               newSpan.textContent = "";
               image[i].src =
-                newData[i].images &&
-                newData[i].images.length &&
-                newData[i].images[0].src;
+              dataList[i].images &&
+              dataList[i].images.length &&
+              dataList[i].images[0].src;
             });
           }
         });
@@ -1147,8 +1215,10 @@ $(document).ready(function () {
     }
   }
 
-  function getShoes(wooUrl, element) {
+ function getShoes(wooUrl, element) {
     try {
+      let loader = `<div id="loader"></div>`;
+      element.innerHTML=loader;
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
       })
@@ -1156,17 +1226,11 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          const newData = [];
+          let loadIcon = document.getElementById('loader');
+          loadIcon.remove();
+        
 
-          dataList.forEach((data) => {
-            data.categories.forEach((cat) => {
-              if (cat.id == 230) {
-                newData.push(data);
-              }
-            });
-          });
-
-          for (const data of newData) {
+          for (const data of dataList) {
             const prodEl = document.createElement("div");
 
             prodEl.className = "card";
@@ -1196,14 +1260,15 @@ $(document).ready(function () {
             prodEl.innerHTML = `
            
             <div class='imageContainer6'>
-              <img
+            <a href=${data.permalink}>
+            <img
               class="card-img-top-6"
               src=${data.images.length && data.images[0].src}
               alt="Card image cap"
               loading="lazy"
-             />
+             /></a>
           
-          ${disCountEle}
+           ${disCountEle}
            
             </div>
             <div class="card-body" style="cursor: pointer;">
@@ -1244,15 +1309,15 @@ $(document).ready(function () {
             dots: "#dots",
             rewind: true,
             arrows: {
-              prev: ".glider-prev",
-              next: ".glider-next",
+              prev: ".glider-prev-5",
+              next: ".glider-next-5",
             },
             responsive: [
               {
                 breakpoint: 800,
                 settings: {
                   slidesToScroll: "auto",
-                  itemWidth: 280,
+                  itemWidth: 200,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -1300,14 +1365,14 @@ $(document).ready(function () {
 
           //toggle quickView
 
-          for (const [i, data] of newData.entries()) {
+          for (const [i, data] of dataList.entries()) {
             imageContainer2[i].addEventListener("mouseover", () => {
               // quickView[0].classList.add("visible");
 
               image[i].src =
-                newData[i].images && newData[i].images.length > 1
-                  ? newData[i].images[1].src
-                  : newData[i].images[0].src;
+              dataList[i].images && dataList[i].images.length > 1
+                  ? dataList[i].images[1].src
+                  : dataList[i].images[0].src;
 
               span.className = "imageCartIcon";
 
@@ -1316,13 +1381,19 @@ $(document).ready(function () {
               span.appendChild(icon);
               imageContainer2[i].appendChild(span);
 
-              newSpan.className = "quickView";
+              newSpan.className = "quickView-1";
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
 
               imageContainer2[i].appendChild(newSpan);
-              newSpan.addEventListener("click", () => displayModal(data));
+              // newSpan.addEventListener("click", () => displayModal(data));
+              newSpan.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+              span.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
             });
 
             imageContainer2[i].addEventListener("mouseout", () => {
@@ -1332,9 +1403,408 @@ $(document).ready(function () {
               newSpan.className = "";
               newSpan.textContent = "";
               image[i].src =
-                newData[i].images &&
-                newData[i].images.length &&
-                newData[i].images[0].src;
+              dataList[i].images &&
+              dataList[i].images.length &&
+              dataList[i].images[0].src;
+            });
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function getHealth(wooUrl, element) {
+    try {
+      let loader = `<div id="loader"></div>`;
+      element.innerHTML=loader;
+      fetch(wooUrl, {
+        headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (dataList) {
+          let loadIcon = document.getElementById('loader');
+          loadIcon.remove();
+        
+
+          for (const data of dataList) {
+            const prodEl = document.createElement("div");
+
+            prodEl.className = "card";
+            prodEl.style = "width: 18rem; margin: 5px;cursor: pointer;";
+
+            let h5;
+
+            let disCountEle;
+            let discount =
+              ((data.regular_price - data.sale_price) / data.regular_price) *
+              100;
+            discount = Math.floor(discount);
+            function numberWithCommas(x) {
+              return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            let regular_price = numberWithCommas(data.regular_price);
+            let sale_price = numberWithCommas(data.sale_price);
+            if (data.on_sale) {
+              h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${regular_price}.00</del> Rs.${sale_price}.00</span></h5>`;
+              disCountEle = ` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`;
+            } else {
+              h5 = `<h5><span style="font-weight: 600;">Rs.${regular_price}.00</span></h5>`;
+              disCountEle = "";
+            }
+
+            prodEl.innerHTML = `
+           
+            <div class='imageContainer7'>
+            <a href=${data.permalink}>
+            <img
+              class="card-img-top-7"
+              src=${data.images.length && data.images[0].src}
+              alt="Card image cap"
+              loading="lazy"
+             /></a>
+          
+           ${disCountEle}
+           
+            </div>
+            <div class="card-body" style="cursor: pointer;">
+            <div style=" white-space: nowrap; 
+            width: 100%; 
+            overflow: hidden;
+            text-overflow: ellipsis; ">  <a><span style="font-size: 10px; color: #6c757d;" class="card-title">${data.slug.toUpperCase()}</span></a></div>
+            <div style=" white-space: nowrap; 
+            width: 100%; 
+            overflow: hidden;
+            text-overflow: ellipsis;"> <a><h6 class="card-title">${
+              data.name
+            }</h6></a></div>
+              <p class="card-text">
+               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
+              </p>
+              <div>
+                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
+                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
+                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
+                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
+                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
+              </div>
+              <div>
+               ${h5}
+              </div>
+            </div>
+         `;
+
+            element.appendChild(prodEl);
+          }
+          new Glider(element, {
+            slidesToShow: "auto",
+            slidesToScroll: 1,
+            itemWidth: 200,
+            draggable: true,
+            scrollLock: false,
+            dots: "#dots",
+            rewind: true,
+            arrows: {
+              prev: ".glider-prev-6",
+              next: ".glider-next-6",
+            },
+            responsive: [
+              {
+                breakpoint: 800,
+                settings: {
+                  slidesToScroll: "auto",
+                  itemWidth: 200,
+                  slidesToShow: "auto",
+                  exactWidth: true,
+                },
+              },
+              {
+                breakpoint: 700,
+                settings: {
+                  slidesToScroll: 5,
+                  slidesToShow: 5,
+                  dots: false,
+                  arrows: true,
+                },
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToScroll: 3,
+                  slidesToShow: 3,
+                },
+              },
+              {
+                breakpoint: 300,
+                settings: {
+                  slidesToScroll: 2,
+                  slidesToShow: 1,
+                  dots: false,
+                  arrows: true,
+                  scrollLock: false,
+                },
+              },
+            ],
+          });
+
+          const imageContainer2 =
+            document.getElementsByClassName("imageContainer7");
+          const quickView = document.getElementsByClassName("quickView");
+
+          const image = document.getElementsByClassName("card-img-top-7");
+
+          const cartIcon = document.querySelector(".imageCartIcon");
+
+          let span = document.createElement("SPAN");
+          let icon = document.createElement("i");
+          let newSpan = document.createElement("SPAN");
+
+          //toggle quickView
+
+          for (const [i, data] of dataList.entries()) {
+            imageContainer2[i].addEventListener("mouseover", () => {
+              // quickView[0].classList.add("visible");
+
+              image[i].src =
+              dataList[i].images && dataList[i].images.length > 1
+                  ? dataList[i].images[1].src
+                  : dataList[i].images[0].src;
+
+              span.className = "imageCartIcon";
+
+              icon.className = "fal fa-shopping-bag";
+
+              span.appendChild(icon);
+              imageContainer2[i].appendChild(span);
+
+              newSpan.className = "quickView-1";
+              newSpan.setAttribute("data-toggle", "modal");
+              newSpan.setAttribute("data-target", "#exampleModalCenter");
+              newSpan.textContent = "Quick View";
+
+              imageContainer2[i].appendChild(newSpan);
+              // newSpan.addEventListener("click", () => displayModal(data));
+              newSpan.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+
+              span.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+            });
+
+            imageContainer2[i].addEventListener("mouseout", () => {
+              // quickView[0].classList.remove("visible");
+              span.className = "";
+              icon.className = "";
+              newSpan.className = "";
+              newSpan.textContent = "";
+              image[i].src =
+              dataList[i].images &&
+              dataList[i].images.length &&
+              dataList[i].images[0].src;
+            });
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function getMobile(wooUrl, element) {
+    try {
+      let loader = `<div id="loader"></div>`;
+      element.innerHTML=loader;
+      fetch(wooUrl, {
+        headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (dataList) {
+          let loadIcon = document.getElementById('loader');
+          loadIcon.remove();
+        
+
+          for (const data of dataList) {
+            const prodEl = document.createElement("div");
+
+            prodEl.className = "card";
+            prodEl.style = "width: 18rem; margin: 5px;cursor: pointer;";
+
+            let h5;
+
+            let disCountEle;
+            let discount =
+              ((data.regular_price - data.sale_price) / data.regular_price) *
+              100;
+            discount = Math.floor(discount);
+            function numberWithCommas(x) {
+              return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            let regular_price = numberWithCommas(data.regular_price);
+            let sale_price = numberWithCommas(data.sale_price);
+            if (data.on_sale) {
+              h5 = `<h5><span style="font-weight: 600;"><del style="color:#a7a7a7" ; font-size:0.8em>Rs.${regular_price}.00</del> Rs.${sale_price}.00</span></h5>`;
+              disCountEle = ` <span class="saleIcon" style="padding-left:10px; padding-top: 2px; font-weight: 600;">-${discount}%</span>`;
+            } else {
+              h5 = `<h5><span style="font-weight: 600;">Rs.${regular_price}.00</span></h5>`;
+              disCountEle = "";
+            }
+
+            prodEl.innerHTML = `
+           
+            <div class='imageContainer8'>
+            <a href=${data.permalink}>
+            <img
+              class="card-img-top-8"
+              src=${data.images.length && data.images[0].src}
+              alt="Card image cap"
+              loading="lazy"
+             /></a>
+          
+           ${disCountEle}
+           
+            </div>
+            <div class="card-body" style="cursor: pointer;">
+            <div style=" white-space: nowrap; 
+            width: 100%; 
+            overflow: hidden;
+            text-overflow: ellipsis; ">  <a><span style="font-size: 10px; color: #6c757d;" class="card-title">${data.slug.toUpperCase()}</span></a></div>
+            <div style=" white-space: nowrap; 
+            width: 100%; 
+            overflow: hidden;
+            text-overflow: ellipsis;"> <a><h6 class="card-title">${
+              data.name
+            }</h6></a></div>
+              <p class="card-text">
+               <span  style="font-size: 15px; color: #6c757d;">Sale by HandyBuy.lk</span>
+              </p>
+              <div>
+                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
+                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
+                <span class="fa fa-star checked fa-xs" style="color: #6c757d;"></span>
+                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
+                <span class="fa fa-star fa-xs" style="color: #6c757d;"></span>
+              </div>
+              <div>
+               ${h5}
+              </div>
+            </div>
+         `;
+
+            element.appendChild(prodEl);
+          }
+          new Glider(element, {
+            slidesToShow: "auto",
+            slidesToScroll: 1,
+            itemWidth: 200,
+            draggable: true,
+            scrollLock: false,
+            dots: "#dots",
+            rewind: true,
+            arrows: {
+              prev: ".glider-prev-7",
+              next: ".glider-next-7",
+            },
+            responsive: [
+              {
+                breakpoint: 800,
+                settings: {
+                  slidesToScroll: "auto",
+                  itemWidth: 200,
+                  slidesToShow: "auto",
+                  exactWidth: true,
+                },
+              },
+              {
+                breakpoint: 700,
+                settings: {
+                  slidesToScroll: 5,
+                  slidesToShow: 5,
+                  dots: false,
+                  arrows: true,
+                },
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToScroll: 3,
+                  slidesToShow: 3,
+                },
+              },
+              {
+                breakpoint: 300,
+                settings: {
+                  slidesToScroll: 2,
+                  slidesToShow: 1,
+                  dots: false,
+                  arrows: true,
+                  scrollLock: false,
+                },
+              },
+            ],
+          });
+
+          const imageContainer2 =
+            document.getElementsByClassName("imageContainer8");
+          const quickView = document.getElementsByClassName("quickView");
+
+          const image = document.getElementsByClassName("card-img-top-8");
+
+          const cartIcon = document.querySelector(".imageCartIcon");
+
+          let span = document.createElement("SPAN");
+          let icon = document.createElement("i");
+          let newSpan = document.createElement("SPAN");
+
+          //toggle quickView
+
+          for (const [i, data] of dataList.entries()) {
+            imageContainer2[i].addEventListener("mouseover", () => {
+              // quickView[0].classList.add("visible");
+
+              image[i].src =
+              dataList[i].images && dataList[i].images.length > 1
+                  ? dataList[i].images[1].src
+                  : dataList[i].images[0].src;
+
+              span.className = "imageCartIcon";
+
+              icon.className = "fal fa-shopping-bag";
+
+              span.appendChild(icon);
+              imageContainer2[i].appendChild(span);
+
+              newSpan.className = "quickView-1";
+              newSpan.setAttribute("data-toggle", "modal");
+              newSpan.setAttribute("data-target", "#exampleModalCenter");
+              newSpan.textContent = "Quick View";
+
+              imageContainer2[i].appendChild(newSpan);
+              // newSpan.addEventListener("click", () => displayModal(data));
+              newSpan.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+              span.addEventListener("click", () => {
+                window.location.href = `${data.permalink}`;
+              });
+            });
+
+            imageContainer2[i].addEventListener("mouseout", () => {
+              // quickView[0].classList.remove("visible");
+              span.className = "";
+              icon.className = "";
+              newSpan.className = "";
+              newSpan.textContent = "";
+              image[i].src =
+              dataList[i].images &&
+              dataList[i].images.length &&
+              dataList[i].images[0].src;
             });
           }
         });
@@ -1348,7 +1818,7 @@ $(document).ready(function () {
     document.querySelectorAll(".glider")[1]
   );
   getProductNew(
-    "https://handybuy.lk/wp-json/wc/v3/products/?orderby=date",
+    "https://handybuy.lk/wp-json/wc/v3/products/?orderby=date&per_page=14",
     document.querySelectorAll(".glider")[2]
   );
   getProductDeals(
@@ -1356,41 +1826,29 @@ $(document).ready(function () {
     document.querySelectorAll(".glider")[3]
   );
   getProductHome(
-    "https://handybuy.lk/wp-json/wc/v3/products/?page=1&per_page=100",
+    "https://handybuy.lk/wp-json/wc/v3/products?category=196&per_page=15",
     document.querySelectorAll(".glider")[4]
   );
   getClothing(
-    "https://handybuy.lk/wp-json/wc/v3/products/?page=1&per_page=100",
+    "https://handybuy.lk/wp-json/wc/v3/products?category=226&page=2&per_page=15&orderby=popularity",
     document.querySelectorAll(".glider")[5]
   );
   getShoes(
-    "https://handybuy.lk/wp-json/wc/v3/products/?page=9&per_page=100",
+    "https://handybuy.lk/wp-json/wc/v3/products?category=230&page=2&per_page=15",
     document.querySelectorAll(".glider")[6]
   );
-  const getOtherProducts = () => {
-    const products = [];
-    const cakes = [];
 
-    // for(let i =1; i<=2;i++){
+  getHealth(
+    "https://handybuy.lk/wp-json/wc/v3/products?category=163&page=2&per_page=15",
+    document.querySelectorAll(".glider")[7]
+  );
 
-    fetch(`https://handybuy.lk/wp-json/wc/v3/products/?page=&per_page=100`, {
-      headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then((dataList) => {
-        dataList.forEach((data) => {
-          data.categories.forEach((cat) => {
-            if (cat.id == 479) {
-              cakes.push(data);
-            }
-          });
-        });
-      });
-    // }
-    products.push(cakes);
-  };
+  getMobile(
+    "https://handybuy.lk/wp-json/wc/v3/products?category=201&page=2&per_page=15",
+    document.querySelectorAll(".glider")[8]
+  );
 
-  getOtherProducts();
+ 
+
+ 
 });
