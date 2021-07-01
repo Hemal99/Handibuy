@@ -14,7 +14,7 @@ new Glider(glider1,{
             breakpoint: 800,
             settings: {
                 slidesToScroll: 0,
-                itemWidth: 400,
+                itemWidth: 450,
                 slidesToShow:'auto',
                 exactWidth: true
             }

@@ -326,7 +326,7 @@ form.example::after {
 .quickView {
   position: absolute;
   left: 50%;
-  bottom: 35%;
+  bottom: 37%;
   transform: translate(-50%);
   padding-bottom: 10px;
   color: white;
@@ -344,7 +344,25 @@ form.example::after {
 .quickView-1 {
   position: absolute;
   left: 50%;
-  bottom: 0%;
+  bottom: 45%;
+  transform: translate(-50%);
+  padding-bottom: 10px;
+  color: white;
+  width: 100%;
+  background-color: #191464;
+  height: 50px;
+  opacity: 0.8;
+  text-align: center;
+  padding-top: 13px;
+  font-family: Poppins, sans-serif;
+
+  /* display: none; */
+}
+
+.quickView-2 {
+  position: absolute;
+  left: 50%;
+  bottom: -10%;
   transform: translate(-50%);
   padding-bottom: 10px;
   color: white;
@@ -449,7 +467,7 @@ footer {
 }
 
 /*Image hovers*/
- .imageContainer1  .imageContainer2 .imageContainer3 .imageContainer4   {
+ .imageContainer1  .imageContainer2 .imageContainer3 .imageContainer4 .imageContainer5,.imageContainer6 ,.imageContainer7, .imageContainer8  {
   position: relative;
 
   background-repeat: no-repeat;
@@ -459,15 +477,7 @@ footer {
  
 }
 
-.imageContainer5,.imageContainer6 ,.imageContainer7, .imageContainer8{
-  position: relative;
 
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  height: 200px;
- 
-}
 
 
 
@@ -484,49 +494,49 @@ footer {
   display: block;
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 220px;
 }
 
 .imageContainer3 img {
   display: block;
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 220px;
 }
 
 .imageContainer4 img {
   display: block;
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 220px;
 }
 
 .imageContainer5 img {
   display: block;
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 220px;
 }
 
 .imageContainer6 img {
   display: block;
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 220px;
 }
 
 .imageContainer7 img {
   display: block;
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 220px;
 }
 
 .imageContainer8 img {
   display: block;
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 220px;
 }
 
 
@@ -665,7 +675,7 @@ footer {
   position: absolute;
   bottom: 16rem;
   top: 1rem;
-  left: 83%;
+  left: 81%;
   height: 35px;
   border: 1px solid #6c757d;
   width: 33px;
@@ -693,7 +703,7 @@ footer {
   position: absolute;
   bottom: 16rem;
   top: 1rem;
-  left: 85%;
+  left: 71%;
   height: 35px;
   border: 1px solid #6c757d;
   width: 33px;
@@ -710,7 +720,7 @@ footer {
   position: absolute;
   bottom: 16rem;
   top: 1rem;
-  left: 85%;
+  left: 81%;
   height: 35px;
   border: 1px solid #6c757d;
   width: 33px;
@@ -727,7 +737,7 @@ footer {
   position: absolute;
   bottom: 16rem;
   top: 1rem;
-  left: 85%;
+  left: 81%;
   height: 35px;
   border: 1px solid #6c757d;
   width: 33px;
@@ -1538,7 +1548,7 @@ form.example::after {
 
 .glider-contain {
   width: 100%;
-  max-width: 997px;
+  max-width: 1200px;
   margin: 0 auto;
   font-size: 15px;
 
@@ -1697,26 +1707,7 @@ footer {
 
 
 
-.imageContainer1 img {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 300px;
-}
 
-.imageContainer2 img {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 300px;
-}
-
-.imageContainer3 img {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 300px;
-}
 /* .card-img-top {
   content: url("./assets/carousel/rose-22-259x194.jpg");
 }
@@ -1768,7 +1759,7 @@ footer {
   position: absolute;
   bottom: 16rem;
   top: 1rem;
-  left: 83%;
+  left: 81%;
   height: 35px;
   border: 1px solid #6c757d;
   width: 33px;
@@ -1796,7 +1787,7 @@ footer {
   position: absolute;
   bottom: 16rem;
   top: 1rem;
-  left: 85%;
+  left: 81%;
   height: 35px;
   border: 1px solid #6c757d;
   width: 33px;
@@ -1813,7 +1804,7 @@ footer {
   position: absolute;
   bottom: 16rem;
   top: 1rem;
-  left: 85%;
+  left: 81%;
   height: 35px;
   border: 1px solid #6c757d;
   width: 33px;
@@ -2302,37 +2293,73 @@ input[type=number] {
 
 /*Loader*/
 
-#loader {
-  margin-left: 29rem;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3b5998;
+
+#lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  left: 555px;
   width: 80px;
   height: 80px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 1s linear infinite;
 }
-
-@media screen and (max-width:566px) {
-  #loader {
-    margin-left: 8rem;
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3b5998;
-    width: 80px;
-    height: 80px;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 1s linear infinite;
+#lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #3b5998;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+#lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+#lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+#lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+#lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
   }
 }
 
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
+@media screen and (max-width:566px) {
+ 
+  #lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    left: 125px;
+    width: 80px;
+    height: 80px;
+  }
+  
+  
+  }

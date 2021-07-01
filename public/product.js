@@ -199,7 +199,7 @@ $(document).ready(function () {
 
    function getProducts(wooUrl, element) {
     try {
-      let loader = `<div id="loader"></div>`;
+      let loader = `<div id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       element.innerHTML=loader;
       
      
@@ -210,7 +210,7 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          let loadIcon = document.getElementById('loader');
+          let loadIcon = document.getElementById('lds-ellipsis');
           loadIcon.remove();
 
           for (const [i, data] of dataList.entries()) {
@@ -312,8 +312,8 @@ $(document).ready(function () {
               {
                 breakpoint: 800,
                 settings: {
-                  slidesToScroll: "auto",
-                  itemWidth: 280,
+                  slidesToScroll: 1,
+                  itemWidth: 300,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -321,7 +321,7 @@ $(document).ready(function () {
               {
                 breakpoint: 700,
                 settings: {
-                  slidesToScroll: 5,
+                  slidesToScroll: 1,
                   slidesToShow: 5,
                   dots: false,
                   arrows: true,
@@ -330,14 +330,14 @@ $(document).ready(function () {
               {
                 breakpoint: 600,
                 settings: {
-                  slidesToScroll: 3,
+                  slidesToScroll: 1,
                   slidesToShow: 3,
                 },
               },
               {
                 breakpoint: 300,
                 settings: {
-                  slidesToScroll: 2,
+                  slidesToScroll: 1,
                   slidesToShow: 1,
                   dots: false,
                   arrows: true,
@@ -415,7 +415,7 @@ $(document).ready(function () {
 
   function getProductNew(wooUrl, element) {
     try {
-      let loader = `<div id="loader"></div>`;
+      let loader = `<div id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       element.innerHTML=loader;
      
 
@@ -427,7 +427,7 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          let loadIcon = document.getElementById('loader');
+          let loadIcon = document.getElementById('lds-ellipsis');
           loadIcon.remove();
           for (const data of dataList) {
             const prodEl = document.createElement("div");
@@ -514,8 +514,8 @@ $(document).ready(function () {
               {
                 breakpoint: 800,
                 settings: {
-                  slidesToScroll: "auto",
-                  itemWidth: 280,
+                  slidesToScroll: 1,
+                  itemWidth: 237,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -523,7 +523,7 @@ $(document).ready(function () {
               {
                 breakpoint: 700,
                 settings: {
-                  slidesToScroll: 5,
+                  slidesToScroll: 1,
                   slidesToShow: 5,
                   dots: false,
                   arrows: true,
@@ -579,7 +579,7 @@ $(document).ready(function () {
               span.appendChild(icon);
               imageContainer2[i].appendChild(span);
 
-              newSpan.className = "quickView";
+              newSpan.className = "quickView-1";
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
@@ -614,7 +614,7 @@ $(document).ready(function () {
 
   function getProductDeals(wooUrl, element) {
     try {
-      let loader = `<div id="loader"></div>`;
+      let loader = `<div id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       element.innerHTML=loader;
      
 
@@ -627,7 +627,7 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          let loadIcon = document.getElementById('loader');
+          let loadIcon = document.getElementById('lds-ellipsis');
           loadIcon.remove();
           console.log("data", dataList);
 
@@ -718,8 +718,8 @@ $(document).ready(function () {
               {
                 breakpoint: 800,
                 settings: {
-                  slidesToScroll: "auto",
-                  itemWidth: 280,
+                  slidesToScroll: 1,
+                  itemWidth: 237,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -727,7 +727,7 @@ $(document).ready(function () {
               {
                 breakpoint: 700,
                 settings: {
-                  slidesToScroll: 5,
+                  slidesToScroll: 1,
                   slidesToShow: 5,
                   dots: false,
                   arrows: true,
@@ -736,7 +736,7 @@ $(document).ready(function () {
               {
                 breakpoint: 600,
                 settings: {
-                  slidesToScroll: 3,
+                  slidesToScroll: 1,
                   slidesToShow: 3,
                 },
               },
@@ -783,7 +783,7 @@ $(document).ready(function () {
               span.appendChild(icon);
               imageContainer2[i].appendChild(span);
 
-              newSpan.className = "quickView";
+              newSpan.className = "quickView-1";
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
@@ -818,7 +818,7 @@ $(document).ready(function () {
 
   function getProductHome(wooUrl, element) {
     try {
-      let loader = `<div id="loader"></div>`;
+      let loader = `<div id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       element.innerHTML=loader;
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
@@ -827,7 +827,7 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          let loadIcon = document.getElementById('loader');
+          let loadIcon = document.getElementById('lds-ellipsis');
           loadIcon.remove();
           
 
@@ -918,8 +918,8 @@ $(document).ready(function () {
               {
                 breakpoint: 800,
                 settings: {
-                  slidesToScroll: "auto",
-                  itemWidth: 280,
+                  slidesToScroll: 1,
+                  itemWidth: 237,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -927,7 +927,7 @@ $(document).ready(function () {
               {
                 breakpoint: 700,
                 settings: {
-                  slidesToScroll: 5,
+                  slidesToScroll: 1,
                   slidesToShow: 5,
                   dots: false,
                   arrows: true,
@@ -936,7 +936,7 @@ $(document).ready(function () {
               {
                 breakpoint: 600,
                 settings: {
-                  slidesToScroll: 3,
+                  slidesToScroll: 1,
                   slidesToShow: 3,
                 },
               },
@@ -983,7 +983,7 @@ $(document).ready(function () {
               span.appendChild(icon);
               imageContainer2[i].appendChild(span);
 
-              newSpan.className = "quickView";
+              newSpan.className = "quickView-1";
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
@@ -1018,7 +1018,7 @@ $(document).ready(function () {
 
   function getClothing(wooUrl, element) {
     try {
-      let loader = `<div id="loader"></div>`;
+      let loader = `<div id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       element.innerHTML=loader;
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
@@ -1027,7 +1027,7 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          let loadIcon = document.getElementById('loader');
+          let loadIcon = document.getElementById('lds-ellipsis');
           loadIcon.remove();
          
 
@@ -1118,7 +1118,7 @@ $(document).ready(function () {
                 breakpoint: 800,
                 settings: {
                   slidesToScroll: "auto",
-                  itemWidth: 200,
+                  itemWidth: 237,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -1217,7 +1217,7 @@ $(document).ready(function () {
 
  function getShoes(wooUrl, element) {
     try {
-      let loader = `<div id="loader"></div>`;
+      let loader = `<div id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       element.innerHTML=loader;
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
@@ -1226,7 +1226,7 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          let loadIcon = document.getElementById('loader');
+          let loadIcon = document.getElementById('lds-ellipsis');
           loadIcon.remove();
         
 
@@ -1317,7 +1317,7 @@ $(document).ready(function () {
                 breakpoint: 800,
                 settings: {
                   slidesToScroll: "auto",
-                  itemWidth: 200,
+                  itemWidth: 237,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -1381,7 +1381,7 @@ $(document).ready(function () {
               span.appendChild(icon);
               imageContainer2[i].appendChild(span);
 
-              newSpan.className = "quickView-1";
+              newSpan.className = "quickView-2";
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
@@ -1416,7 +1416,7 @@ $(document).ready(function () {
 
   function getHealth(wooUrl, element) {
     try {
-      let loader = `<div id="loader"></div>`;
+      let loader = `<div id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       element.innerHTML=loader;
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
@@ -1425,7 +1425,7 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          let loadIcon = document.getElementById('loader');
+          let loadIcon = document.getElementById('lds-ellipsis');
           loadIcon.remove();
         
 
@@ -1516,7 +1516,7 @@ $(document).ready(function () {
                 breakpoint: 800,
                 settings: {
                   slidesToScroll: "auto",
-                  itemWidth: 200,
+                  itemWidth: 237,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -1580,7 +1580,7 @@ $(document).ready(function () {
               span.appendChild(icon);
               imageContainer2[i].appendChild(span);
 
-              newSpan.className = "quickView-1";
+              newSpan.className = "quickView-2";
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
@@ -1616,7 +1616,7 @@ $(document).ready(function () {
 
   function getMobile(wooUrl, element) {
     try {
-      let loader = `<div id="loader"></div>`;
+      let loader = `<div id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       element.innerHTML=loader;
       fetch(wooUrl, {
         headers: { Authorization: basicAuth(wooClientKey, wooClientSecret) },
@@ -1625,7 +1625,7 @@ $(document).ready(function () {
           return response.json();
         })
         .then(function (dataList) {
-          let loadIcon = document.getElementById('loader');
+          let loadIcon = document.getElementById('lds-ellipsis');
           loadIcon.remove();
         
 
@@ -1716,7 +1716,7 @@ $(document).ready(function () {
                 breakpoint: 800,
                 settings: {
                   slidesToScroll: "auto",
-                  itemWidth: 200,
+                  itemWidth: 237,
                   slidesToShow: "auto",
                   exactWidth: true,
                 },
@@ -1780,7 +1780,7 @@ $(document).ready(function () {
               span.appendChild(icon);
               imageContainer2[i].appendChild(span);
 
-              newSpan.className = "quickView-1";
+              newSpan.className = "quickView-2";
               newSpan.setAttribute("data-toggle", "modal");
               newSpan.setAttribute("data-target", "#exampleModalCenter");
               newSpan.textContent = "Quick View";
