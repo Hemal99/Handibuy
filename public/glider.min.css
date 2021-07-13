@@ -9,12 +9,20 @@
 }
 .glider-dot,
 .glider-next,
-.glider-prev {
+.glider-prev{
   border: 0;
   padding: 0;
   user-select: none;
   outline: 0;
 }
+.glider-next-1,
+.glider-prev-1{
+  border: 0;
+  padding: 0;
+  user-select: none;
+  outline: 0;
+}
+
 .glider-contain {
   width: 100%;
 }
@@ -69,7 +77,7 @@
   height: 0;
 }
 .glider-next,
-.glider-prev {
+.glider-prev ,.glider-next-1,.glider-prev-1,.glider-next-2,.glider-next-3,.glider-next-4,.glider-next-5,.glider-next-6,.glider-next-7,.glider-prev-2,.glider-prev-3,.glider-prev-4,.glider-prev-5,.glider-prev-6,.glider-prev-7 {
   position: absolute;
   background: 0 0;
   z-index: 2;
@@ -93,16 +101,127 @@
 .glider-prev:hover {
   color: #ccc;
 }
+
+
+
+.glider-next-1:focus,
+.glider-next-1:hover,
+.glider-prev-1:focus,
+.glider-prev-1:hover {
+  color: #ccc;
+}
+
+.glider-next-2:focus,
+.glider-next-2:hover,
+.glider-prev-2:focus,
+.glider-prev-2:hover {
+  color: #ccc;
+}
+
+.glider-next-3:focus,
+.glider-next-3:hover,
+.glider-prev-3:focus,
+.glider-prev-3:hover {
+  color: #ccc;
+}
+
+.glider-next-4:focus,
+.glider-next-4:hover,
+.glider-prev-4:focus,
+.glider-prev-4:hover {
+  color: #ccc;
+}
+
+.glider-next-5:focus,
+.glider-next-5:hover,
+.glider-prev-5:focus,
+.glider-prev-5:hover {
+  color: #ccc;
+}
+
+.glider-next-6:focus,
+.glider-next-6:hover,
+.glider-prev-6:focus,
+.glider-prev-6:hover {
+  color: #ccc;
+}
+
+.glider-next-7:focus,
+.glider-next-7:hover,
+.glider-prev-7:focus,
+.glider-prev-7:hover {
+  color: #ccc;
+}
+
+
+
 .glider-next {
   right: -23px;
   left: auto;
 }
+.glider-next-1,.glider-next-2,.glider-next-3,.glider-next-4,.glider-next-5,.glider-next-6,.glider-next-7 {
+  right: -23px;
+  left: auto;
+}
+
 .glider-next.disabled,
 .glider-prev.disabled {
   opacity: 0.25;
   color: #666;
   cursor: default;
 }
+
+
+
+.glider-next-1.disabled,
+.glider-prev-1.disabled {
+  opacity: 0.25;
+  color: #666;
+  cursor: default;
+}
+
+.glider-next-2.disabled,
+.glider-prev-2.disabled {
+  opacity: 0.25;
+  color: #666;
+  cursor: default;
+}
+
+.glider-next-3.disabled,
+.glider-prev-3.disabled {
+  opacity: 0.25;
+  color: #666;
+  cursor: default;
+}
+
+.glider-next-4.disabled,
+.glider-prev-4.disabled {
+  opacity: 0.25;
+  color: #666;
+  cursor: default;
+}
+
+.glider-next-5.disabled,
+.glider-prev-5.disabled {
+  opacity: 0.25;
+  color: #666;
+  cursor: default;
+}
+
+.glider-next-6.disabled,
+.glider-prev-6.disabled {
+  opacity: 0.25;
+  color: #666;
+  cursor: default;
+}
+
+.glider-next-7.disabled,
+.glider-prev-7.disabled {
+  opacity: 0.25;
+  color: #666;
+  cursor: default;
+}
+
 .glider-hide {
   opacity: 0;
 }
