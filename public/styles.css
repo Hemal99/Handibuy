@@ -386,6 +386,11 @@ form.example::after {
   opacity: 1;
 }
 
+.quickView-2:hover {
+  opacity: 1;
+}
+
+
 .imageContainer:hover {
   /* background-color: #181361; */
   animation: QuickView 0s ease-in-out 0s;
@@ -1925,18 +1930,18 @@ footer {
     left: 85%;
   }
   .imageContainer5 .imageCartIcon{
-    left: 90%;
+    left: 81%;
   }
   .imageContainer6 .imageCartIcon{
-    left: 100%;
+    left: 81%;
   }
 
   .imageContainer7 .imageCartIcon{
-    left: 100%;
+    left: 81%;
   }
 
   .imageContainer8 .imageCartIcon{
-    left: 100%;
+    left: 81%;
   }
  
 }

@@ -4,7 +4,7 @@ $(document).ready(function () {
   const wooClientKey = "ck_e9c78043460fb66b77fc8583b6a71f30c44b9ad9";
   const wooClientSecret = "cs_4d18b5cdd33874cd2532c0b64f2e11cf419a79a3";
 
-  const newArrivals = document.querySelectorAll(".glider")[2];
+  const newArrivals = document.getElementsByClassName(".glider")[2];
 
   //const gliderTrack = document.querySelector('.glider-track')
 
@@ -296,6 +296,8 @@ $(document).ready(function () {
           
            
           }
+         // window.addEventListener('DOMContentLoaded', function() { var glide = new Glide('.glide'); glide.mount(); });
+
           new Glider(element, {
             slidesToShow: "auto",
             slidesToScroll: 1,
@@ -1142,7 +1144,7 @@ $(document).ready(function () {
               {
                 breakpoint: 300,
                 settings: {
-                  slidesToScroll: 2,
+                  slidesToScroll: 1,
                   slidesToShow: 1,
                   dots: false,
                   arrows: true,
@@ -1341,7 +1343,7 @@ $(document).ready(function () {
               {
                 breakpoint: 300,
                 settings: {
-                  slidesToScroll: 2,
+                  slidesToScroll: 1,
                   slidesToShow: 1,
                   dots: false,
                   arrows: true,
@@ -1540,7 +1542,7 @@ $(document).ready(function () {
               {
                 breakpoint: 300,
                 settings: {
-                  slidesToScroll: 2,
+                  slidesToScroll: 1,
                   slidesToShow: 1,
                   dots: false,
                   arrows: true,
@@ -1740,7 +1742,7 @@ $(document).ready(function () {
               {
                 breakpoint: 300,
                 settings: {
-                  slidesToScroll: 2,
+                  slidesToScroll: 1,
                   slidesToShow: 1,
                   dots: false,
                   arrows: true,
@@ -1813,40 +1815,61 @@ $(document).ready(function () {
     }
   }
 
+  let count=0;
+
+  //load on scroll
+
+
+  const delay =()=>{
+    getClothing(
+      "https://handybuy.lk/wp-json/wc/v3/products?category=226&page=2&per_page=15&orderby=popularity",
+      document.getElementsByClassName("glider")[5]
+    );
+    getShoes(
+      "https://handybuy.lk/wp-json/wc/v3/products?category=230&page=2&per_page=15",
+      document.getElementsByClassName("glider")[6]
+    );
+  
+    getHealth(
+      "https://handybuy.lk/wp-json/wc/v3/products?category=163&page=2&per_page=15",
+      document.getElementsByClassName("glider")[7]
+    );
+  
+    getMobile(
+      "https://handybuy.lk/wp-json/wc/v3/products?category=201&page=2&per_page=15",
+      document.getElementsByClassName("glider")[8]
+    );
+  }
+
+  setTimeout(delay,3000)
+
+
+  const delay2=()=>{
+    getProductDeals(
+      "https://handybuy.lk/wp-json/wc/v3/products/?on_sale=true",
+      document.getElementsByClassName("glider")[3]
+    );
+    getProductHome(
+      "https://handybuy.lk/wp-json/wc/v3/products?category=196&per_page=15",
+      document.getElementsByClassName("glider")[4]
+    );
+  }
+
+  setTimeout(delay2,2000)
+
+
+
   getProducts(
     "https://handybuy.lk/wp-json/wc/v3/products/?orderby=popularity",
-    document.querySelectorAll(".glider")[1]
+    document.getElementsByClassName("glider")[1]
   );
   getProductNew(
     "https://handybuy.lk/wp-json/wc/v3/products/?orderby=date&per_page=14",
-    document.querySelectorAll(".glider")[2]
+    document.getElementsByClassName("glider")[2]
   );
-  getProductDeals(
-    "https://handybuy.lk/wp-json/wc/v3/products/?on_sale=true",
-    document.querySelectorAll(".glider")[3]
-  );
-  getProductHome(
-    "https://handybuy.lk/wp-json/wc/v3/products?category=196&per_page=15",
-    document.querySelectorAll(".glider")[4]
-  );
-  getClothing(
-    "https://handybuy.lk/wp-json/wc/v3/products?category=226&page=2&per_page=15&orderby=popularity",
-    document.querySelectorAll(".glider")[5]
-  );
-  getShoes(
-    "https://handybuy.lk/wp-json/wc/v3/products?category=230&page=2&per_page=15",
-    document.querySelectorAll(".glider")[6]
-  );
+  
 
-  getHealth(
-    "https://handybuy.lk/wp-json/wc/v3/products?category=163&page=2&per_page=15",
-    document.querySelectorAll(".glider")[7]
-  );
 
-  getMobile(
-    "https://handybuy.lk/wp-json/wc/v3/products?category=201&page=2&per_page=15",
-    document.querySelectorAll(".glider")[8]
-  );
 
  
 

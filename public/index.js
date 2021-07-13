@@ -3,6 +3,8 @@
 
 const searchBtn = document.getElementsByClassName("searchButton")[0];
 const searchInput = document.getElementById("searchInput");
+const searchInput1 = document.getElementById("searchInput1");
+const searchBtn1 = document.getElementById('searchButton1')
 const webLink = "https://handybuy.lk/";
 
 
@@ -16,6 +18,18 @@ searchBtn.addEventListener("click", () => {
   try {
     if (searchInput.value) {
       window.location.href = `${webLink}?s=${searchInput.value}&post_type=product`;
+    } else {
+      window.location.href = `${webLink}`;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+searchBtn1.addEventListener("click", () => {
+  try {
+    if (searchInput1.value) {
+      window.location.href = `${webLink}?s=${searchInput1.value}&post_type=product`;
     } else {
       window.location.href = `${webLink}`;
     }
